@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "../node_modules/bootstrap/scss/functions";
+@import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
 
 :root {
   --background: #ffffff;
