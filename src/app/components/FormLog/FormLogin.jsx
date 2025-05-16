@@ -4,8 +4,9 @@ import Link from 'next/link';
 export default function Login() {
   return (
 
-    
-    <form className="form">
+    <div className="container">
+<div class="max-[600px]:bg-sky-300 min-[320px]:text-center">
+ <form className="form">
       <div className="flex-column">
         <label>Email</label>
       </div>
@@ -62,5 +63,11 @@ export default function Login() {
         </button>
       </div>
     </form>
+
+  </div>
+ 
+    </div>
+  
+   
   );
 }
