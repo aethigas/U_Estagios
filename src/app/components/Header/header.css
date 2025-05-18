@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Cinzel:wght@400..900&family=Dynalight&family=Pompiere&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+/* Fundo geral */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  z-index: 10;
+}
+
+
+/* HEADER centralizado e sem padding extra */
+header {
+
+  width: 100%;
+  z-index: 1;
+  font-family: 'Cinzel', serif;
+  display: flex;
+  justify-content: center;
+   /* ESSENCIAL: sem espaço vertical */
+  background-color: transparent;
+  position: relative; 
+}
+
+/* NAV geral */
+nav {
+  margin: 0; /* remove espaço vertical entre nav e border */
+  
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+/* Cada item do menu */
+nav li {
+  display: flex;
+  align-items: center;
+}
+
+/* NÃO MEXIDO: fonte e tamanho preservados */
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 1.3em;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #9c9a86;
+}
+
+/* Logo dentro da nav */
+.logo img {
+  width: 120px;
+  height: 20px;
+  margin: 0; /* tira espaço vertical */
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+  animation: subir 0.8s ease-out forwards;
+}
+
+/* Animação da logo */
+@keyframes subir {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

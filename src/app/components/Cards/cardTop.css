@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
+*{
+  
+
+  font-family: Ancizar Sans;
+}
+
+/* Títulos */
+.ConteudoModal{
+  font-size: 20px;
+  font-weight: 600;
+ 
+
+
+}
+.ConteudoModal h5{
+  font-size: 35px;
+  margin-bottom: 1rem;
+  font-weight: bold;
+  color:#490E67;
+}
+
+.container h5 {
+  font-size: 35px;
+  font-weight: bold;
+   color:#490E67;
+}
+
+/* Botões */
+.BotaoCards {
+  padding: 12px 20px;
+  position: absolute;
+  width: calc(100% - 38px);
+  text-align: center;
+  bottom: 24px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.BotaoModal {
+  padding: 12px 20px;
+  width: calc(100% - 38px);
+  text-align: center;
+  bottom: 24px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-size: 18px;
+  font-weight: 600;
+}
+.BotaoVerMais button {
+  background-color: #490E67;
+  color:#fff;
+  width: 16rem;
+  height: 4rem;
+}
+.BotaoXModal button{
+    width: 4rem;             /* Tamanho do botão */
+  height: 4rem;
+/* Fundo do botão */
+  border:  #490E67; 
+    
+  opacity: 1;              
+  padding: 0.5rem;
+  filter: invert(23%) sepia(71%) saturate(715%) hue-rotate(268deg) brightness(90%) contrast(96%);
+}
+
+/* Texto dos Cards */
+.TextoCards {
+  margin-left: 10px;
+  margin-top: 2rem;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.TextoCards img {
+  margin-right: 8px;
+  width: 20px;
+  height: 20px;
+}
+
+/* Informações do Card */
+.card-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
