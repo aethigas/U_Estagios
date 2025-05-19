@@ -1,9 +1,10 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-// import "FiltroVagas.css"
+// import 'flowbite';
+// import "./FiltroVagas.css"
+// export default function FiltroDeVagas() {
+//     return (
+   
 
-export default function FiltroDeVagas() {
-    return (
-    <></>
 
-    )
-}
+
+//     )
+// }

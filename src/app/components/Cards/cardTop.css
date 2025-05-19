@@ -5,25 +5,26 @@
   font-family: Ancizar Sans;
 }
 
-/* Títulos */
+
 .ConteudoModal{
-  font-size: 20px;
-  font-weight: 600;
- 
-
-
-}
-.ConteudoModal h5{
-  font-size: 35px;
-  margin-bottom: 1rem;
-  font-weight: bold;
-  color:#490E67;
-}
-
+  font-size: 18px;
+    max-height: 45vh; 
+    overflow-y: auto;
+  } 
+  .ConteudoModal img{
+    margin-right: 8px;
+    width: 25px;
+    height: 25px;
+  }
+/* Títulos */
 .container h5 {
-  font-size: 35px;
+  font-size: 45px;
   font-weight: bold;
-   color:#490E67;
+   color:#085f26;
+}
+
+.ConteudoModal p{
+  font-weight: 600;
 }
 
 /* Botões */
@@ -50,17 +51,17 @@
   font-weight: 600;
 }
 .BotaoVerMais button {
-  background-color: #490E67;
+  background-color: #085f26;
   color:#fff;
   width: 16rem;
   height: 4rem;
 }
 .BotaoXModal button{
-    width: 4rem;             /* Tamanho do botão */
+    width: 4rem;            
   height: 4rem;
 /* Fundo do botão */
-  border:  #490E67; 
-    
+  border:  #085f26; 
+  
   opacity: 1;              
   padding: 0.5rem;
   filter: invert(23%) sepia(71%) saturate(715%) hue-rotate(268deg) brightness(90%) contrast(96%);
@@ -68,16 +69,16 @@
 
 /* Texto dos Cards */
 .TextoCards {
-  margin-left: 10px;
-  margin-top: 2rem;
+ margin-left: 10px;
+  margin-top: 1rem;
   font-size: 20px;
   font-weight: 600;
 }
 
 .TextoCards img {
   margin-right: 8px;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
 }
 
 /* Informações do Card */
