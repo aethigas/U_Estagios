@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 *{
-  
 
   font-family: Ancizar Sans;
+}
+.full-width-bg {
+  width: 100%;
+  background-color: #F1F5F9;
+
 }
 
 
@@ -56,15 +60,28 @@
   width: 16rem;
   height: 4rem;
 }
-.BotaoXModal button{
-    width: 4rem;            
+.BotaoXModal button {
+  width: 4rem;            
   height: 4rem;
-/* Fundo do botão */
-  border:  #085f26; 
-  
+  border: 2px solid #085f26;
   opacity: 1;              
   padding: 0.5rem;
-  filter: invert(23%) sepia(71%) saturate(715%) hue-rotate(268deg) brightness(90%) contrast(96%);
+  outline: none;  /* Remove o contorno padrão do foco */
+  transition: all 0.3s ease;  /* Para suavizar o efeito de transição */
+}
+
+/* Estilo do botão quando ele está em foco */
+.BotaoXModal button:focus {
+  background-color: #085f26; /* Mantém a cor verde */
+     /* Mantém a cor verde */
+  box-shadow: 0 0 0 0.2rem rgba(8, 95, 38, 0.5); /* Sombra suave verde */
+}
+
+/* Estilo do botão quando pressionado (estado ativo) */
+.BotaoXModal button:active {
+  background-color: #085f26; /* Mantém a cor verde */
+  border-color: #085f26;     /* Mantém a cor verde */
+  transform: scale(0.98);     /* Leve redução de tamanho ao pressionar */
 }
 
 /* Texto dos Cards */

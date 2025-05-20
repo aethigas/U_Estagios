@@ -141,7 +141,8 @@ export default function CardTop() {
   };
 
   return (
-    <section className="container">
+    <section className="full-width-bg">
+ <div className="container">
       <div className="Cards">
         <div className="row">
           <div className="col-md-12 CardVagas d-flex flex-wrap justify-content-center">
@@ -291,7 +292,7 @@ export default function CardTop() {
               setTimeout(() => handleToggle("more"), 1000); // 1000 ms = 1 segundo
             }}
           >
-            Ver Mais
+            Carregar mais
           </button>
         )}
 
@@ -301,6 +302,9 @@ export default function CardTop() {
           </button>
         )} */}
       </div>
-    </section>
+    </div>
+</section>
+
+    
   );
 }

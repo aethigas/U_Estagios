@@ -1,0 +1,35 @@
+
+body {
+    width: 100%;
+    background-color: #F1F5F9;
+  
+  }
+
+ select option {
+    font-weight: 600;
+    text-transform: uppercase; 
+     font-size: 15px;
+     background-color: #fff;
+}
+
+
+  
+
+
+  /* O texto exibido no select mantém como está (Primeira letra maiúscula) */
+  select, input {
+    text-transform: capitalize;
+    height: 3.5rem;
+
+  
+  }
+.form-select, input.form-control {
+    border: 1px solid ;  
+    border-radius: 4px;         
+    padding: 8px;              
+  }
+  
+  .form-select:focus, input.form-control:focus  {
+    border-color: #000; 
+    box-shadow: 0 0 0 0.05rem }/* Estilo do input de cidade */
+
