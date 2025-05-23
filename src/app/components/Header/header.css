@@ -11,65 +11,6 @@ header {
   z-index: 1;
   display: flex;
   justify-content: center;
-
-}
-
-/* NAV geral */
-nav {
-  margin: 0; /* remove espaço vertical entre nav e border */
-  
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 5rem;
-  padding: 0;
-  margin: 0;
+
 }
-
-/* Cada item do menu */
-nav li {
-  display: flex;
-  align-items: center;
-}
-
-/* NÃO MEXIDO: fonte e tamanho preservados */
-
-nav a {
-  text-decoration: none;
-  color: #000;
-  font-weight: 600;
-  font-size: 1.5em;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #085f26;
-}
-
-/* Logo dentro da nav */
-.logo img {
-  width: 120px;
-  height: 5rem;
-  margin: 0; /* tira espaço vertical */
-  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
-  animation: descer 0.8s ease-out forwards;
-}
-
-/* Animação da logo */
-@keyframes descer {
-  0% {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-
-

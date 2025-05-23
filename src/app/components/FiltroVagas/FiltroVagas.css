@@ -1,44 +1,82 @@
-.full-width-bg {
-  width: 100%;
-  background-color: #F1F5F9;
-
-}
-h6{
-  font-weight: 600;
-  font-size: 20px;
-  text-align: start
+.formVagas {
+    width: 100%;
+    background-color: #F1F5F9;
+  }
   
-}
+  /* Títulos */
+ .formVagas h6 {
+    font-weight: 600;
+    font-size: 20px;
+    text-align: start;
+  }
+  
+  /* Botão aplicar */
+ .formVagas .mt-custom {
+    margin-top: 2rem;
+  }
+  
+  /* Inputs de texto */
+ .formVagas input {
+    height: 3.5rem;
+  }
+  
+  .formVagas input.form-control {
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  
+  .formVagas input.form-control:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.05rem;
+  }
+  
+  /* Dropdown customizado */
+  .formVagas .form-select {
+    height: 3.5rem;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-align: left;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .formVagas .form-select:hover,
+  .formVagas .form-select:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.05rem;
+  }
+  
+  /* Lista de opções */
+  .formVagas ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .formVagas ul li {
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 8px 12px;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  
+  .formVagas ul li:hover {
 
-select option {
-  font-weight: 600;
-  text-transform: uppercase;
-  font-size: 15px;
-  background-color: #fff;
-}
-.mt-custom {
-  margin-top: 2rem; 
-}
-
-/* Alterar o background da opção selecionada */
-select.form-select option:checked {
-  background-color: #fff;
-  color: #085f26;
-}
-
-/* Estilização geral dos campos */
-select, input {
-  text-transform: capitalize;
-  height: 3.5rem;
-}
-
-.form-select, input.form-control {
-  border: 1px solid;
-  border-radius: 4px;
-  padding: 8px;
-}
-
-.form-select:focus, input.form-control:focus {
-  border-color: #000;
-  box-shadow: 0 0 0 0.05rem;
-}
+    background-color: #085f26;
+    color: #fff;
+  }
+  
+  .formVagas ul li.selected {
+    background-color: #085f26;
+    color: #fff;
+  }
+  

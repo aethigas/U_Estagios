@@ -1,6 +1,8 @@
 import Header from './components/Header/Header.jsx'
-import CardTop from './components/Cards/cardTop.jsx';
+import CardVagas from './components/Cards/cardVagas.jsx';
 import FiltroDeVagas from './components/FiltroVagas/FiltroVagas.jsx';
+import Footer from './components/Footer/Footer.jsx';
+import CardInformacoes from './components/Cards/cardInformacoes.jsx';
 import './home.css'
 export default function Home() {
   return (
@@ -20,11 +22,13 @@ export default function Home() {
 
 
 
+<CardInformacoes></CardInformacoes>
 
 
  
 <FiltroDeVagas></FiltroDeVagas>
-<CardTop></CardTop>
+<CardVagas></CardVagas>
+{/* <Footer></Footer> */}
   </>
   );
 }

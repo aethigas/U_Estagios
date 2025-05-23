@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
+
+body {
+  font-family: 'Ancizar Sans', sans-serif;
+}
+
+/* Fundo geral */
+.background {
+  width: 100%;
+  background-color: #F1F5F9;
+}
+
+/* Títulos */
+.container h5 {
+  font-size: 45px;
+  font-weight: bold;
+  color: #085f26;
+}
+
+/* Conteúdo do Modal */
+.ConteudoModal {
+  font-size: 18px;
+  max-height: 45vh;
+  overflow-y: auto;
+}
+
+.ConteudoModal p {
+  font-weight: 600;
+}
+
+.ConteudoModal img,
+.TextoCards img {
+  margin-right: 8px;
+  width: 25px;
+  height: 25px;
+}
+
+/* Texto nos cards */
+.TextoCards {
+  margin: 1rem 0 0 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Itens informativos nos cards */
+.card-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+/* Botões principais */
+.BotaoCards,
+.BotaoModal {
+  padding: 12px 20px;
+  width: calc(100% - 38px);
+  text-align: center;
+  bottom: 24px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Botão "Ver mais" */
+.BotaoVerMais button {
+  background-color: #085f26;
+  color: #fff;
+  width: 16rem;
+  height: 4rem;
+}
+
+/* Botão de fechar modal (X) */
+.BotaoXModal button {
+  width: 4rem;
+  height: 4rem;
+  border: 2px solid #085f26;
+  padding: 0.5rem;
+  outline: none;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+/* Botão de fechar: foco */
+.BotaoXModal button:focus {
+  background-color: #085f26;
+  box-shadow: 0 0 0 0.2rem rgba(8, 95, 38, 0.5);
+}
+
+/* Botão de fechar: clique ativo */
+.BotaoXModal button:active {
+  background-color: #085f26;
+  border-color: #085f26;
+  transform: scale(0.98);
+}
