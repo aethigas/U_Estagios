@@ -151,7 +151,7 @@ export default function CardTop() {
                 key={index}
                 className="card m-3"
                 style={{
-                  width: "35rem",
+                  width: "36rem",
                   height: "24rem",
                   borderRadius: "13px",
                   backgroundColor: "#fff",

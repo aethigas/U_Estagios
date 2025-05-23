@@ -7,7 +7,22 @@ export default function Home() {
  
 
   <>
- {/* <Header></Header> */}
+ <Header></Header>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
 <FiltroDeVagas></FiltroDeVagas>
 <CardTop></CardTop>
   </>

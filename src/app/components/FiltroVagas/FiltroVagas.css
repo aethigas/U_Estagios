@@ -1,35 +1,44 @@
+.full-width-bg {
+  width: 100%;
+  background-color: #F1F5F9;
 
-body {
-    width: 100%;
-    background-color: #F1F5F9;
+}
+h6{
+  font-weight: 600;
+  font-size: 20px;
+  text-align: start
   
-  }
-
- select option {
-    font-weight: 600;
-    text-transform: uppercase; 
-     font-size: 15px;
-     background-color: #fff;
 }
 
+select option {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 15px;
+  background-color: #fff;
+}
+.mt-custom {
+  margin-top: 2rem; 
+}
 
-  
+/* Alterar o background da opção selecionada */
+select.form-select option:checked {
+  background-color: #fff;
+  color: #085f26;
+}
 
+/* Estilização geral dos campos */
+select, input {
+  text-transform: capitalize;
+  height: 3.5rem;
+}
 
-  /* O texto exibido no select mantém como está (Primeira letra maiúscula) */
-  select, input {
-    text-transform: capitalize;
-    height: 3.5rem;
-
-  
-  }
 .form-select, input.form-control {
-    border: 1px solid ;  
-    border-radius: 4px;         
-    padding: 8px;              
-  }
-  
-  .form-select:focus, input.form-control:focus  {
-    border-color: #000; 
-    box-shadow: 0 0 0 0.05rem }/* Estilo do input de cidade */
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 8px;
+}
 
+.form-select:focus, input.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.05rem;
+}
