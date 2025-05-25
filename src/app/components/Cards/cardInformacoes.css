@@ -29,7 +29,7 @@
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     justify-content:flex-end;
@@ -40,18 +40,18 @@
     color: white;
     padding: 1rem;
   }
-  
-  .CardTexto h1 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    font-weight: bold;
-  }
-  
-  .CardTexto p {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
-  }
+.CardTexto h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.CardTexto p {
+  font-size: clamp(0.875rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
   
   .CardStyle:hover {
     transform: scale(1.02);

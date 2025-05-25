@@ -1,17 +1,11 @@
-@import "tailwindcss";
-@import "../node_modules/bootstrap/scss/functions";
-@import 'bootstrap/dist/js/bootstrap.bundle.min.js'; 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-
-
+/* Suas variáveis personalizadas */
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
- inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -26,5 +20,4 @@
 body {
   background: var(--background);
   color: var(--foreground);
-
 }

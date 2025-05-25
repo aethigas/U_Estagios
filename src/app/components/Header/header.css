@@ -1,16 +1,197 @@
-@import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Cinzel:wght@400..900&family=Dynalight&family=Pompiere&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bahiana&family=Cinzel:wght@400..900&family=Dynalight&family=Pompiere&family=Roboto:wght@400;700&display=swap');
 
-
-
-
-
-/* HEADER centralizado e sem padding extra */
 header {
+  background-color: #F1F5F9;
+}
 
-  width: 100%;
-  z-index: 1;
+.logo {
+  width: 6rem;
+  max-width: 100%;
+  margin: 1.5rem auto;
+}
+
+@media (min-width: 640px) {
+  .logo {
+    width: 7rem;
+    margin: 0 1rem;
+  }
+}
+
+.navbar {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
+  max-width: 1120px;
+  padding: 1rem;
+  margin: 0 auto;
+}
 
+@media (min-width: 640px) {
+  .navbar {
+    justify-content: center; /* Centraliza itens */
+  }
+}
+
+.menu-toggle {
+  display: block;
+  padding: 0.5rem;
+  border: none;
+  background: none;
+  border-radius: 0.375rem;
+  color: #085f26;
+  cursor: pointer;
+}
+
+.menu-icon {
+  width: 2rem;
+  height: 2rem;
+}
+
+@media (min-width: 640px) {
+  .menu-toggle {
+    display: none; /* Esconde toggle em telas maiores */
+  }
+}
+
+.menu {
+  display: none;
+  width: 100%;
+  font-weight: 600;
+  text-align: center;
+  font-size: 17px;
+}
+
+.menu li {
+  list-style: none;
+}
+
+.menu a {
+  margin-top: 1.5rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+  text-decoration: none;
+}
+
+.menu a:hover {
+  text-decoration: underline;
+}
+
+.menu.open {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .menu {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+  }
+}
+
+/* Botões de login e cadastro */
+.auth-buttons {
+  display: none;
+  flex-direction: row;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.auth-buttons.open {
+  display: flex; /* Aparece em menu aberto em telas pequenas */
+}
+
+@media (min-width: 640px) {
+  .auth-buttons {
+    display: flex;
+    margin-left: auto; /* Empurra para o fim da navbar */
+    width: auto;
+    margin-top: 0;
+  }
+}
+
+.login,
+.cadastre {
+  width: 100%;
+  max-width: 180px;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+@media (min-width: 640px) {
+  .login,
+  .cadastre {
+    width: 180px;
+  }
+}
+
+.login {
+  color: #085f26;
+  background-color: transparent;
+  border: 1px solid #085f26;
+}
+
+.login:hover {
+  background-color: #085f26;
+  color: white;
+}
+
+.cadastre {
+  background-color: #085f26;
+  color: white;
+}
+
+.cadastre:hover {
+  background-color: #185f26;
+}
+
+/* Ajuste específico para telas entre 900px e 959px */
+@media (min-width: 900px) and (max-width: 959px) {
+  .navbar {
+    flex-wrap: nowrap; /* evita quebra */
+    justify-content: space-between; /* logo à esquerda, menu no centro, botões à direita */
+  }
+  
+  .logo {
+    margin: 0 1rem 0 0; /* remove margin automática, alinha à esquerda */
+    flex-shrink: 0; /* não encolhe */
+  }
+  
+  .menu {
+    display: flex !important;
+    flex: 1 1 auto; /* ocupa espaço no meio */
+    justify-content: center;
+    gap: 2rem;
+    margin: 0 1rem;
+    white-space: nowrap; /* evita quebra dos links */
+    overflow: hidden;
+  }
+  
+  .auth-buttons {
+    display: flex !important;
+    margin-left: 0;
+    flex-shrink: 0; /* não encolhe */
+    gap: 1rem;
+    justify-content: flex-end;
+  }
+  
+  .login,
+  .cadastre {
+    max-width: 140px; /* reduz um pouco para caber */
+    white-space: nowrap;
+    padding: 0 1rem;
+  }
 }
