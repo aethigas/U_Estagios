@@ -259,7 +259,7 @@ export default function FiltroDeVagas() {
                   className="btn btn w-100 mt-custom"
                   style={{
                     height: "3.5rem",
-                    backgroundColor: "#085f26",
+                   
                     color: "#fff",
                   }}
                   onClick={aplicarFiltros}
@@ -339,7 +339,7 @@ export default function FiltroDeVagas() {
                 className="btn btn w-100 mt-custom"
                 style={{
                   height: "3.5rem",
-                  backgroundColor: "#085f26",
+               
                   color: "#fff",
                 }}
                 onClick={aplicarFiltros}

@@ -5,14 +5,15 @@ header {
 }
 
 .logo {
-  width: 6rem;
+  width: 4.5rem;
   max-width: 100%;
-  margin: 1.5rem auto;
+  margin: 1rem auto;
+  display: block;
 }
 
 @media (min-width: 640px) {
   .logo {
-    width: 7rem;
+    width: 6rem;
     margin: 0 1rem;
   }
 }
@@ -25,14 +26,26 @@ header {
   max-width: 1120px;
   padding: 1rem;
   margin: 0 auto;
+  text-align: center;
+  position: relative; /* Necessário para posicionamento absoluto do toggle */
 }
 
 @media (min-width: 640px) {
   .navbar {
-    justify-content: center; /* Centraliza itens */
+    justify-content: center;
+    flex-direction: row;
   }
 }
 
+/* Correção para telas menores */
+@media (max-width: 639px) {
+  .navbar {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+/* Botão de menu fixado no canto esquerdo */
 .menu-toggle {
   display: block;
   padding: 0.5rem;
@@ -41,6 +54,10 @@ header {
   border-radius: 0.375rem;
   color: #085f26;
   cursor: pointer;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
 }
 
 .menu-icon {
@@ -50,7 +67,7 @@ header {
 
 @media (min-width: 640px) {
   .menu-toggle {
-    display: none; /* Esconde toggle em telas maiores */
+    display: none;
   }
 }
 
@@ -60,37 +77,47 @@ header {
   font-weight: 600;
   text-align: center;
   font-size: 17px;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
 
 .menu li {
   list-style: none;
+  width: 100%;
 }
 
 .menu a {
-  margin-top: 1.5rem;
-  margin-left: 1rem;
+  margin: 1rem 0;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #000;
   text-decoration: none;
+
 }
 
 .menu a:hover {
-  text-decoration: underline;
+ color: #285f26;
 }
 
 .menu.open {
-  display: block;
+  display: flex;
 }
 
 @media (min-width: 640px) {
   .menu {
     display: flex;
+    flex-direction: row;
     gap: 4rem;
     justify-content: center;
     align-items: center;
     width: auto;
+  }
+
+  .menu.open {
+    display: flex;
   }
 }
 
@@ -105,15 +132,16 @@ header {
 }
 
 .auth-buttons.open {
-  display: flex; /* Aparece em menu aberto em telas pequenas */
+  display: flex;
 }
 
 @media (min-width: 640px) {
   .auth-buttons {
     display: flex;
-    margin-left: auto; /* Empurra para o fim da navbar */
+    margin-left: auto;
     width: auto;
     margin-top: 0;
+    justify-content: flex-end;
   }
 }
 
@@ -141,56 +169,72 @@ header {
 .login {
   color: #085f26;
   background-color: transparent;
+  margin-left: 1.5rem;
   border: 1px solid #085f26;
 }
 
 .login:hover {
-  background-color: #085f26;
+  background-color: #7abf78;
   color: white;
 }
 
 .cadastre {
-  background-color: #085f26;
+  background-color: #7abf78;
   color: white;
 }
 
 .cadastre:hover {
-  background-color: #185f26;
+  background-color: #085f26;
+}
+
+/* Correção dos botões em mobile */
+@media (max-width: 639px) {
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .login,
+  .cadastre {
+    max-width: 90%;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 /* Ajuste específico para telas entre 900px e 959px */
 @media (min-width: 900px) and (max-width: 959px) {
   .navbar {
-    flex-wrap: nowrap; /* evita quebra */
-    justify-content: space-between; /* logo à esquerda, menu no centro, botões à direita */
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
-  
+
   .logo {
-    margin: 0 1rem 0 0; /* remove margin automática, alinha à esquerda */
-    flex-shrink: 0; /* não encolhe */
+    margin: 0 1rem 0 0;
+    flex-shrink: 0;
   }
-  
+
   .menu {
     display: flex !important;
-    flex: 1 1 auto; /* ocupa espaço no meio */
+    flex: 1 1 auto;
     justify-content: center;
     gap: 2rem;
     margin: 0 1rem;
-    white-space: nowrap; /* evita quebra dos links */
+    white-space: nowrap;
     overflow: hidden;
   }
-  
+
   .auth-buttons {
     display: flex !important;
     margin-left: 0;
-    flex-shrink: 0; /* não encolhe */
+    flex-shrink: 0;
     gap: 1rem;
     justify-content: flex-end;
   }
-  
+
   .login,
   .cadastre {
-    max-width: 140px; /* reduz um pouco para caber */
+    max-width: 140px;
     white-space: nowrap;
     padding: 0 1rem;
   }

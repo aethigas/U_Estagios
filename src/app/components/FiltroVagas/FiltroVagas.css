@@ -14,8 +14,12 @@
 }
 
 /* Botão aplicar */
-.formVagas .mt-custom {
+ .mt-custom {
   margin-top: 2rem;
+  background-color: #7abf78;
+}
+ .mt-custom:hover {
+  background-color: #085f26;
 }
 
 /* Inputs de texto */
@@ -75,11 +79,11 @@
 /* Hover só em dispositivos que suportam hover (desktop/tablet) */
 @media (hover: hover) and (pointer: fine) {
   .formVagas ul li:hover {
-    background-color: #085f26;
+    background-color:#7abf78;
     color: #fff;
   }
   .formVagas ul li.selected {
-    background-color: #085f26;
+    background-color: #7abf78;
     color: #fff;
   }
 }

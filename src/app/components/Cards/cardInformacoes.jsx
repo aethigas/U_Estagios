@@ -4,26 +4,30 @@ export default function CardInformacoes() {
     return (
         <div className="container-card-informacoes">
             <div className="row">
-                <div className="col-md-12 d-flex flex-wrap justify-content-center" style={{ gap: '3rem' }}>
+                
+                
+                <div className="col-md-12 d-flex flex-wrap justify-content-center" style={{ gap: '2rem' }}>
                     <div className="CardStyle">
-                        <img src="/imgteste.jpg" className="CardImg" alt="..." />
+                        <img src="/" className="CardImg" alt="..." />
                         <div className="CardTexto">
                             <h1>Empresa</h1>
-                            <p>Texto de exemplo para a empresa.</p>
+                            <p>Precisando de Jovem Aprendiz e/ou Estagiário para sua empresa?
+                                Clique aqui.
+                            </p>
                         </div>
                     </div>
                     <div className="CardStyle">
-                        <img src="/imgteste.jpg" className="CardImg" alt="..." />
+                        <img src="/" className="CardImg" alt="..." />
                         <div className="CardTexto">
                             <h1>Instituições</h1>
-                            <p>Texto de exemplo para instituições.</p>
+                            <p>Leve tudo que temos a oferecer para sua instituição de ensino.</p>
                         </div>
                     </div>
                     <div className="CardStyle">
-                        <img src="/imgteste.jpg" className="CardImg" alt="..." />
+                        <img src="/" className="CardImg" alt="..." />
                         <div className="CardTexto">
                             <h1>Estudante</h1>
-                            <p>Texto de exemplo para estudantes.</p>
+                            <p>Vagas de estágio espalhadas por todo o Brasil.</p>
                         </div>
                     </div>
                 </div>
