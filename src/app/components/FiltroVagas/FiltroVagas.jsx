@@ -8,7 +8,7 @@ const tiposDeVaga = [
   { id: "1", nome: "Todas" },
   { id: "2", nome: "Aprendiz" },
   { id: "3", nome: "Estágio" },
-  { id: "4", nome: "Processos públicos" },
+
 ];
 
 const niveisEnsino = [
@@ -244,11 +244,11 @@ export default function FiltroDeVagas() {
                 />
               </div>
               <div className="col-12 mb-3">
-                <h6>Código da vaga</h6>
+                <h6>Estado</h6>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Código da vaga"
+                  placeholder="Digite seu estado "
                   value={filtrosLocais.vaga}
                   onChange={(e) => setFiltroLocal("vaga", e.target.value)}
                 />
@@ -323,11 +323,11 @@ export default function FiltroDeVagas() {
             </div>
 
             <div className="col-md-3 col-12 mb-3">
-              <h6>Código da vaga</h6>
+              <h6>Estado</h6>
               <input
                 type="text"
                 className="form-control"
-                placeholder="Código da vaga"
+                placeholder="Digite seu estado"
                 value={filtrosLocais.vaga}
                 onChange={(e) => setFiltroLocal("vaga", e.target.value)}
               />

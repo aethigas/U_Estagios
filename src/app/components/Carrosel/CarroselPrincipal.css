@@ -1,0 +1,11 @@
+.carrossel-custom {
+ 
+    overflow: hidden;
+  }
+  
+  .custom-img {
+    width: 100%;
+ 
+    object-fit: cover; /* para a imagem preencher sem distorcer */
+  }
+  

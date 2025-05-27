@@ -1,16 +1,16 @@
-import Header from './components/Header/Header'
-import CardVagas from './components/Cards/cardVagas'
-import FiltroDeVagas from './components/FiltroVagas/FiltroVagas'
-import Footer from './components/Footer/Footer'
-import CardInformacoes from './components/Cards/cardInformacoes'
-// import styles from './home.module.css'
-// se for css module, renomeie para home.module.css
+import Header from './components/Layout/Header/Header.jsx'
+import CardVagas from './components/Cards/CardVagas.jsx'
+import FiltroDeVagas from './components/FiltroVagas/FiltroVagas.jsx'
+import Footer from './components/Layout/Footer/Footer.jsx'
+import CardInformacoes from './components/Cards/cardInformacoes.jsx'
+import CarroselPrincipal from './components/Carrosel/CarroselPrincipal.jsx'
 
 export default function Home() {
   return (
     <>
       <Header />
-      {/* <CardInformacoes /> */}
+      <CarroselPrincipal/>
+      <CardInformacoes />
       <FiltroDeVagas />
       <CardVagas />
       {/* <Footer /> */}

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
-import "./cardVagas.css";
+import "./CardVagas.css";
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 
