@@ -133,7 +133,7 @@ export default function CardVagas() {
   };
 
   return (
-    <section className="background">
+    <section className="background ">
  <div className="container">
       <div className="Cards">
         <div className="row">
@@ -169,9 +169,9 @@ export default function CardVagas() {
                     onClick={() => abrirModal(vaga)}
                     className="btn btn BotaoCards mt-3"
                     style={{
-                      borderColor: "#085f26",
-                      color: "#085f26",
-                      border: "2px solid #085f26",
+                      borderColor: "#20c997",
+                      color: "#000",
+                      border: "2px solid ##20c997",
                     }}
                   >
                     Ver Detalhes
@@ -250,15 +250,15 @@ export default function CardVagas() {
                   type="button"
                   className="btn btn"
                   style={{
-                    borderColor: "#085f26",
+                    borderColor: "20c997",
                     width: "20rem",
-                    border: "2px solid #085f26",
-                    color: "#085f26",
+                    border: "2px solid #20c997",
+                    color: "#000",
                     textDecoration: "none", // Garantir que o link não tenha sublinhado
                   }}
                 >
                   <Link
-                    href="/Login"
+                    href="/"
                     style={{ textDecoration: "none", color: "#085f26" }}
                   >
                     Tenho Interesse

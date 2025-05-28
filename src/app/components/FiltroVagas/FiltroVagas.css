@@ -3,7 +3,7 @@
 
 .formVagas {
   width: 100%; 
-  background-color: #F1F5F9;
+  background-color: #fff;
 }
 
 /* Títulos */
@@ -19,7 +19,7 @@
   background-color: #7abf78;
 }
  .mt-custom:hover {
-  background-color: #085f26;
+  background-color: #28a745;
 }
 
 /* Inputs de texto */

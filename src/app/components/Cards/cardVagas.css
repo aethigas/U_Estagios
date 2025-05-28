@@ -1,44 +1,39 @@
 /* Importa a fonte Ancizar Sans */
 @import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
 
-/* Aplica a fonte globalmente */
-body {
-  font-family: 'Ancizar Sans', sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #F1F5F9;
-}
+
+
 
 /* Fundo geral da seção de vagas */
 .background {
   width: 100%;
-  background-color: #F1F5F9;
+  background-color: #6c757d;
 }
 
 /* Título da vaga */
 .container h5 {
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2rem, 3vw, 2rem);
   font-weight: bold;
-  color: #085f26;
+  color:   #28a745;;
 }
 
 /* Estilo do card de vaga */
 .custom-card {
   width: 100%;
-  max-width: 36rem;
-  height: auto;
-  border-radius: 13px;
-  background-color: #fff;
+  max-width: 26rem;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
+.custom-card:hover{
+  transform: scale(1.03);
+}
 
 /* Texto informativo nos cards */
 .TextoCards {
-  margin: 1rem 0 0 10px;
-  font-size: 20px;
-  font-weight: 600;
+  margin: 1rem 0 0 5px;
+  font-weight: 500;
 }
 
 /* Ícones e textos alinhados */
@@ -54,12 +49,13 @@ body {
   margin-right: 8px;
   width: 25px;
   height: 25px;
+
 }
 
 /* Conteúdo do Modal */
 .ConteudoModal {
-  font-size: 18px;
-  max-height: 45vh;
+  font-size: 15px;
+  max-height: 35vh;
   overflow-y: auto;
   padding: 1rem 2rem;
 }
@@ -83,16 +79,17 @@ body {
 
 /* Botão "Carregar mais" */
 .BotaoVerMais button {
-  background-color:#7abf78;
+  background-color: #20c997;
   color: #fff;
   width: 16rem;
   height: 4rem;
   border-radius: 4px;
   font-weight: 600;
   transition: 0.3s ease;
+  margin-bottom: 1rem;
 }
 .BotaoVerMais button:hover{
-  background-color:#085f26;
+  background-color:#28a745;
   color: #fff;
 }
 
@@ -100,7 +97,7 @@ body {
 .BotaoXModal button {
   width: 4rem;
   height: 4rem;
-  border: 2px solid #085f26;
+  border: 2px solid #28a745;
   padding: 0.5rem;
   outline: none;
   opacity: 1;
@@ -116,7 +113,7 @@ body {
 
 /* Clique ativo */
 .BotaoXModal button:active {
-  background-color: #085f26;
+  background-color: #28a745;
   border-color:  #7abf78;
   transform: scale(0.98);
 }
@@ -177,3 +174,7 @@ body {
     height: 3rem;
   }
 }
+
+
+
+

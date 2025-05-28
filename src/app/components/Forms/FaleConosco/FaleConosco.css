@@ -1,0 +1,48 @@
+.BotaoEnviar {
+    margin-top: 2rem;
+    background-color: #7abf78;
+    color: #fff;
+    width: 16rem;
+    height: 3rem;
+    border-radius: 4px;
+    font-weight: 600;
+   
+  }
+  
+  .BotaoEnviar:hover {
+    background-color: #085f26;
+    color: #fff;
+  }
+  
+  .Form input,textarea {
+    margin-top: 2rem;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-align: left;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    height: 3.5rem;
+  }
+  
+ .Form input:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.05rem;
+  }
+  
+   .Form textarea {
+    margin-top: 2rem;
+    border: 1px solid;
+    border-radius: 4px;
+    padding: 8px 12px;
+    text-align: left;
+    background-color: #fff;
+    font-weight: 600;
+    font-size: 15px;
+    height: 5.5rem;
+  }
+  .Form textarea:focus {
+    border-color: #000;
+    box-shadow: 0 0 0 0.05rem;
+  }

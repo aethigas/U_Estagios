@@ -6,7 +6,7 @@ export default function CarroselPrincipal() {
 
   return (
     <div className="row justify-content-center">
-      <div className="col-auto">
+      <div className="col-md-12">
         <div
           id="carouselExampleFade"
           className="carousel slide carousel-fade carrossel-custom"
