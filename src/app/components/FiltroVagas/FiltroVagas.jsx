@@ -11,13 +11,6 @@ const tiposDeVaga = [
 
 ];
 
-const niveisEnsino = [
-  { id: "1", nome: "Todos" },
-  { id: "2", nome: "Ensino fundamental" },
-  { id: "3", nome: "Ensino médio" },
-  { id: "4", nome: "Técnico" },
-  { id: "5", nome: "Superior" },
-];
 
 const areasProfissionais = [
   { id: "1", nome: "Todas" },
@@ -140,7 +133,7 @@ export default function FiltroDeVagas() {
           onClick={() => setMenuOpen(!menuOpen)} // Alterna abertura do menu
           aria-label="Abrir/Fechar filtros"
           style={{
-            backgroundColor: "#085f26",
+            backgroundColor: "#007bff",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "4px",
@@ -212,16 +205,7 @@ export default function FiltroDeVagas() {
                   "tipo"
                 )}
               </div>
-              <div className="col-12 mb-3">
-                {renderDropdown(
-                  "Nível de ensino",
-                  niveisEnsino,
-                  filtrosLocais.nivelEnsino,
-                  (v) => setFiltroLocal("nivelEnsino", v),
-                  dropdownAberto === "nivel",
-                  "nivel"
-                )}
-              </div>
+             
               <div className="col-12 mb-3">
                 {renderDropdown(
                   "Área profissional",
@@ -277,7 +261,7 @@ export default function FiltroDeVagas() {
         <div className="container py-4 text-center">
           <div className="row mb-3 justify-content-center">
             {/* Dropdowns desktop */}
-            <div className="col-md-3 col-12">
+            <div className="col-md-5 col-12">
               {renderDropdown(
                 "Tipo de Vaga",
                 tiposDeVaga,
@@ -288,16 +272,7 @@ export default function FiltroDeVagas() {
               )}
             </div>
 
-            <div className="col-md-3 col-12">
-              {renderDropdown(
-                "Nível de ensino",
-                niveisEnsino,
-                filtrosLocais.nivelEnsino,
-                (v) => setFiltroLocal("nivelEnsino", v),
-                dropdownAberto === "nivel",
-                "nivel"
-              )}
-            </div>
+       
 
             <div className="col-md-5 col-12">
               {renderDropdown(
@@ -311,7 +286,7 @@ export default function FiltroDeVagas() {
             </div>
 
             {/* Inputs texto desktop */}
-            <div className="col-md-6 col-12 mb-3">
+            <div className="col-md-5 col-12 mb-3">
               <h6>Cidade</h6>
               <input
                 type="text"

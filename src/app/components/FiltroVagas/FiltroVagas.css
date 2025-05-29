@@ -3,23 +3,24 @@
 
 .formVagas {
   width: 100%; 
-  background-color: #fff;
-}
+  background-color:#6c757d; 
 
+}
 /* Títulos */
 .formVagas h6 {
   font-weight: 600;
   font-size: 20px;
   text-align: start;
+  color: #fff;
 }
 
 /* Botão aplicar */
  .mt-custom {
   margin-top: 2rem;
-  background-color: #7abf78;
+  background-color: #17a2b8;
 }
  .mt-custom:hover {
-  background-color: #28a745;
+  background-color: #007bff;
 }
 
 /* Inputs de texto */
@@ -79,11 +80,11 @@
 /* Hover só em dispositivos que suportam hover (desktop/tablet) */
 @media (hover: hover) and (pointer: fine) {
   .formVagas ul li:hover {
-    background-color:#7abf78;
+    background-color:#17a2b8;
     color: #fff;
   }
   .formVagas ul li.selected {
-    background-color: #7abf78;
+    background-color: #17a2b8;
     color: #fff;
   }
 }

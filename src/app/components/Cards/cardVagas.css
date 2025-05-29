@@ -1,5 +1,5 @@
-/* Importa a fonte Ancizar Sans */
-@import url('https://fonts.googleapis.com/css2?family=Ancizar+Sans:ital,wght@0,100..1000;1,100..1000&display=swap');
+
+
 
 
 
@@ -7,32 +7,45 @@
 /* Fundo geral da seção de vagas */
 .background {
   width: 100%;
-  background-color: #6c757d;
+  background-color: #343a40;
 }
+.ConhecaVagas h1{
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.5rem;
+  display: flex;
+ text-wrap: nowrap;
+ justify-content: center;
+
+}
+
+
 
 /* Título da vaga */
 .container h5 {
-  font-size: clamp(2rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 1.5rem);
   font-weight: bold;
-  color:   #28a745;;
+  color:   #000;
+}
+.container h6{
+  font-size: clamp(1rem, 3vw, 1rem);
 }
 
 /* Estilo do card de vaga */
 .custom-card {
   width: 100%;
-  max-width: 26rem;
-  border-radius: 20px;
+  max-width: 24rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 .custom-card:hover{
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 /* Texto informativo nos cards */
 .TextoCards {
-  margin: 1rem 0 0 5px;
+  margin: 0.4rem ;
   font-weight: 500;
 }
 
@@ -40,15 +53,16 @@
 .card-info-item {
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 15px;
 }
 
 /* Tamanhos dos ícones nos cards e modais */
 .ConteudoModal img,
 .TextoCards img {
-  margin-right: 8px;
-  width: 25px;
-  height: 25px;
+  margin-right: 5px;
+  width: 20px;
+  height: 20px;
 
 }
 
@@ -56,30 +70,35 @@
 .ConteudoModal {
   font-size: 15px;
   max-height: 35vh;
+  margin-bottom: 0.5rem;
   overflow-y: auto;
-  padding: 1rem 2rem;
+
 }
 
 .ConteudoModal p {
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 15px;
 }
 
 /* Botões principais (cards e modal) */
 .BotaoCards,
 .BotaoModal {
-  padding: 12px 20px;
-  width: calc(100% - 38px);
+  padding: 12px 15px;
+  width: calc(100% - 30px);
   text-align: center;
   border-radius: 4px;
   transition: all 0.3s;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 600;
   bottom: 24px;
 }
 
 /* Botão "Carregar mais" */
 .BotaoVerMais button {
-  background-color: #20c997;
+  background-color: #17a2b8;
   color: #fff;
   width: 16rem;
   height: 4rem;
@@ -89,15 +108,15 @@
   margin-bottom: 1rem;
 }
 .BotaoVerMais button:hover{
-  background-color:#28a745;
+  background-color:#007bff;
   color: #fff;
 }
 
 /* Botão de fechar modal (X) */
 .BotaoXModal button {
-  width: 4rem;
-  height: 4rem;
-  border: 2px solid #28a745;
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid #007bff;
   padding: 0.5rem;
   outline: none;
   opacity: 1;
@@ -107,14 +126,14 @@
 
 /* Foco no botão de fechar */
 .BotaoXModal button:focus {
-  background-color: #7abf78;
+  background-color: #17a2b8;
   box-shadow: 0 0 0 0.2rem rgba(8, 95, 38, 0.5);
 }
 
 /* Clique ativo */
 .BotaoXModal button:active {
-  background-color: #28a745;
-  border-color:  #7abf78;
+  background-color: #007bff;
+  border-color:  #17a2b8;
   transform: scale(0.98);
 }
 
@@ -172,6 +191,13 @@
   .BotaoXModal button {
     width: 3rem;
     height: 3rem;
+  }
+  .ConhecaVagas h1{
+ 
+
+    font-size: 2rem;
+
+  
   }
 }
 

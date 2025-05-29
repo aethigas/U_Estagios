@@ -24,9 +24,16 @@ export default function FaleConosco() {
   };
 
   return (
-    <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-md-4">
+    <div className="container FaleConosco"> 
+   
+      <div className="row justify-content-end ">
+      
+        <div className="col-md-4 mt-5 Principal">
+        <div className="row">
+           <div className="col-md-12 mt-5 mb-1 FeedBack">
+           <h1>FeedBack</h1>
+        </div>
+        </div>
           <form onSubmit={handleSubmit}>
             <div className="form-group Form">
               <input
@@ -61,7 +68,7 @@ export default function FaleConosco() {
                 required
               />
             </div>
-            <button className="btn btn BotaoEnviar" type="submit">Enviar</button>
+            <button className="btn btn BotaoEnviar mt-3 mb-3" type="submit">Enviar</button>
           </form>
         </div>
       </div>
