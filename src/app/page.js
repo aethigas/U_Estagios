@@ -10,10 +10,10 @@ export default function Home() {
   return (
     <>
       <Header />
-      {/* <CarroselPrincipal/> */}
       <CardInformacoes />
       <FiltroDeVagas />
-      <CardVagas />
+      <CardVagas />{/* <CarroselPrincipal/> */}
+      
       <FaleConosco/>
       {/* <Footer /> */}
     </>

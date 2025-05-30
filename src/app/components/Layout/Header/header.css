@@ -51,7 +51,7 @@ header {
   border: none;
   background: none;
   border-radius: 0.375rem;
-  color: #007bff;
+  color: #263a89;;
   cursor: pointer;
   position: absolute;
   top: 1rem;
@@ -177,21 +177,21 @@ color:#fff;
   color: #fff;
   background-color: transparent;
   margin-left: 1.5rem;
-  border: 2px solid #007bff;
+  border: 2px solid #003366;
 }
 
 .login:hover {
-  background-color: #007bff;
+  background-color: #263a89;
   color: white;
 }
 
 .cadastre {
-  background-color: #007bff;
+  background-color: #003366;
   color: white;
 }
 
 .cadastre:hover {
-  background-color: #007bff;
+  background-color: #263a89;
 }
 
 /* --------- MOBILE BUTTONS --------- */

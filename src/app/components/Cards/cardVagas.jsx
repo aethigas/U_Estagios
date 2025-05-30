@@ -169,9 +169,9 @@ export default function CardVagas() {
                       onClick={() => abrirModal(vaga)}
                       className="btn btn BotaoCards mt-2 "
                       style={{
-                        borderColor: "#17a2b8",
+                        borderColor: "#263a89",
                         color: "#000",
-                        border: "2px solid #17a2b8",
+                        border: "2px solid #263a89",
                       }}
                     >
                       Ver Detalhes
@@ -251,9 +251,9 @@ export default function CardVagas() {
                     type="button"
                     className="btn btn"
                     style={{
-                      borderColor: "20c997",
+                      borderColor: "#263a89",
                       width: "20rem",
-                      border: "2px solid #17a2b8",
+                      border: "2px solid #263a89",
                       color: "#000",
                       textDecoration: "none", // Garantir que o link não tenha sublinhado
                     }}

@@ -133,7 +133,7 @@ export default function FiltroDeVagas() {
           onClick={() => setMenuOpen(!menuOpen)} // Alterna abertura do menu
           aria-label="Abrir/Fechar filtros"
           style={{
-            backgroundColor: "#007bff",
+            backgroundColor: "#003366",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "4px",
