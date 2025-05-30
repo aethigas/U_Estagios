@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import "./FiltroVagas.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -8,9 +9,7 @@ const tiposDeVaga = [
   { id: "1", nome: "Todas" },
   { id: "2", nome: "Aprendiz" },
   { id: "3", nome: "Estágio" },
-
 ];
-
 
 const areasProfissionais = [
   { id: "1", nome: "Todas" },
@@ -19,65 +18,57 @@ const areasProfissionais = [
   { id: "4", nome: "Saúde" },
 ];
 
-export default function FiltroDeVagas() {
-  // Estado para armazenar os valores dos filtros
-  const [filtrosLocais, setFiltrosLocais] = useState({
-    tipoDeVaga: "1",
-    nivelEnsino: "1",
-    areaProfissional: "1",
-    cidade: "",
-    vaga: "",
-  });
+export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
+  const [filtrosLocais, setFiltrosLocais] = useState(filtros);
 
-  // Estado que guarda qual dropdown está aberto ('tipo', 'nivel', 'area' ou null)
+  useEffect(() => {
+    setFiltrosLocais(filtros);
+  }, [filtros]);
+
+  const aplicar = () => {
+    if (typeof onAplicarFiltros === "function") {
+      onAplicarFiltros(filtrosLocais);
+    } else {
+      console.warn("onAplicarFiltros não foi fornecido");
+    }
+  };
+  
+ 
+
   const [dropdownAberto, setDropdownAberto] = useState(null);
-
-  // Estado para controle do menu mobile
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Referência para o container do filtro - usada para detectar cliques fora do componente
   const wrapperRef = useRef(null);
 
   useEffect(() => {
-    // Função que fecha dropdowns e menu se clicar fora do wrapper
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setDropdownAberto(null);  // Fecha qualquer dropdown aberto
-        setMenuOpen(false);       // Fecha menu mobile se aberto
+        setDropdownAberto(null);
+        setMenuOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside); // Registra listener no documento
-    return () => document.removeEventListener("mousedown", handleClickOutside); // Remove no cleanup
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Abre ou fecha o dropdown do filtro clicado (fecha se clicar no aberto)
   const abrirDropdown = (nome) => {
     setDropdownAberto(dropdownAberto === nome ? null : nome);
   };
 
-  // Atualiza o estado local dos filtros (tipoDeVaga, nivelEnsino, etc)
   const setFiltroLocal = (campo, valor) => {
     setFiltrosLocais((prev) => ({ ...prev, [campo]: valor }));
   };
+  
 
-  // Função chamada ao aplicar filtros: aqui pode disparar callback para o pai ou fazer fetch
-  const aplicarFiltros = () => {
-    console.log("Filtros aplicados:", filtrosLocais); // Exemplo: log dos filtros no console
-    setMenuOpen(false);       // Fecha menu mobile após aplicar filtros
-    setDropdownAberto(null);  // Fecha dropdown aberto
-  };
-
-  // Função para renderizar dropdown customizado (reutilizada para os 3 filtros)
   const renderDropdown = (label, items, selected, onSelect, aberto, labelKey) => (
     <div className="mb-3" style={{ position: "relative" }}>
       <h6>{label}</h6>
       <div
         className="form-select"
-        onClick={() => abrirDropdown(labelKey)} // Abre/fecha dropdown ao clicar na caixa
+        onClick={() => abrirDropdown(labelKey)}
         style={{ cursor: "pointer" }}
       >
-        {/* Mostra o nome do item selecionado */}
-        {items.find((item) => item.id === selected)?.nome}
+        {items.find((item) => item.id === selected)?.nome || "Selecione"}
       </div>
       {aberto && (
         <ul
@@ -94,13 +85,12 @@ export default function FiltroDeVagas() {
             margin: 0,
           }}
         >
-          {/* Lista as opções para seleção */}
           {items.map((item) => (
             <li
               key={item.id}
               onClick={() => {
-                onSelect(item.id);      // Atualiza filtro selecionado
-                abrirDropdown(null);    // Fecha dropdown após seleção
+                onSelect(item.id);
+                abrirDropdown(null);
               }}
               style={{ padding: "8px", cursor: "pointer" }}
             >
@@ -126,11 +116,11 @@ export default function FiltroDeVagas() {
           right: menuOpen ? "0" : "auto",
           zIndex: menuOpen ? 1100 : "auto",
           width: "100%",
-          backgroundColor: menuOpen ? "transparent" : "#F1F5F9",
+          backgroundColor: menuOpen ? "transparent" : "#6c757d",
         }}
       >
         <button
-          onClick={() => setMenuOpen(!menuOpen)} // Alterna abertura do menu
+          onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir/Fechar filtros"
           style={{
             backgroundColor: "#003366",
@@ -146,7 +136,6 @@ export default function FiltroDeVagas() {
             fontSize: "1rem",
           }}
         >
-          {/* Ícone muda conforme estado do menu */}
           <svg
             fill="none"
             stroke="currentColor"
@@ -174,11 +163,11 @@ export default function FiltroDeVagas() {
         </button>
       </div>
 
-      {/* Menu de filtros mobile: visível só quando menuOpen true */}
+      {/* Menu de filtros mobile */}
       {menuOpen && (
         <div
           className="formVagas d-md-none"
-          ref={wrapperRef} // Ref para detectar clique fora e fechar menu
+          ref={wrapperRef}
           style={{
             position: "fixed",
             top: "4.2rem",
@@ -194,7 +183,6 @@ export default function FiltroDeVagas() {
         >
           <div className="container text-center">
             <div className="row mb-3 justify-content-center">
-              {/* Renderização dos dropdowns para mobile */}
               <div className="col-12 mb-3">
                 {renderDropdown(
                   "Tipo de Vaga",
@@ -205,7 +193,7 @@ export default function FiltroDeVagas() {
                   "tipo"
                 )}
               </div>
-             
+
               <div className="col-12 mb-3">
                 {renderDropdown(
                   "Área profissional",
@@ -216,37 +204,34 @@ export default function FiltroDeVagas() {
                   "area"
                 )}
               </div>
-              {/* Inputs de texto para cidade e código da vaga */}
+
               <div className="col-12 mb-3">
                 <h6>Cidade</h6>
                 <input
                   type="text"
                   className="form-control"
                   placeholder="Digite sua cidade"
-                  value={filtrosLocais.cidade}
+                  value={filtrosLocais.cidade || ""}
                   onChange={(e) => setFiltroLocal("cidade", e.target.value)}
                 />
               </div>
+
               <div className="col-12 mb-3">
                 <h6>Estado</h6>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="Digite seu estado "
-                  value={filtrosLocais.vaga}
-                  onChange={(e) => setFiltroLocal("vaga", e.target.value)}
+                  placeholder="Digite seu estado"
+                  value={filtrosLocais.estado || ""}
+                  onChange={(e) => setFiltroLocal("estado", e.target.value)}
                 />
               </div>
-              {/* Botão aplicar filtros no mobile */}
+
               <div className="col-12 text-end">
                 <button
-                  className="btn btn w-100 mt-custom"
-                  style={{
-                    height: "3.5rem",
-                   
-                    color: "#fff",
-                  }}
-                  onClick={aplicarFiltros}
+                  className="btn btn-primary w-100 mt-custom"
+                  style={{ height: "3.5rem", color: "#fff" }}
+                  onClick={aplicar}
                 >
                   Aplicar
                 </button>
@@ -256,11 +241,16 @@ export default function FiltroDeVagas() {
         </div>
       )}
 
-      {/* Filtros desktop: sempre visíveis em md+ */}
+      {/* Filtros desktop */}
       <div className="formVagas d-none d-md-block" ref={wrapperRef}>
         <div className="container py-4 text-center">
-          <div className="row mb-3 justify-content-center">
-            {/* Dropdowns desktop */}
+          <motion.div
+            className="row mb-3 justify-content-center"
+            initial={{ opacity: 0, y: -60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.3 }}
+          >
             <div className="col-md-5 col-12">
               {renderDropdown(
                 "Tipo de Vaga",
@@ -271,8 +261,6 @@ export default function FiltroDeVagas() {
                 "tipo"
               )}
             </div>
-
-       
 
             <div className="col-md-5 col-12">
               {renderDropdown(
@@ -285,14 +273,13 @@ export default function FiltroDeVagas() {
               )}
             </div>
 
-            {/* Inputs texto desktop */}
             <div className="col-md-5 col-12 mb-3">
               <h6>Cidade</h6>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Digite sua cidade"
-                value={filtrosLocais.cidade}
+                value={filtrosLocais.cidade || ""}
                 onChange={(e) => setFiltroLocal("cidade", e.target.value)}
               />
             </div>
@@ -303,26 +290,21 @@ export default function FiltroDeVagas() {
                 type="text"
                 className="form-control"
                 placeholder="Digite seu estado"
-                value={filtrosLocais.vaga}
-                onChange={(e) => setFiltroLocal("vaga", e.target.value)}
+                value={filtrosLocais.estado || ""}
+                onChange={(e) => setFiltroLocal("estado", e.target.value)}
               />
             </div>
 
-            {/* Botão aplicar filtros desktop */}
             <div className="col-md-2 col-12 text-end">
               <button
                 className="btn btn w-100 mt-custom"
-                style={{
-                  height: "3.5rem",
-               
-                  color: "#fff",
-                }}
-                onClick={aplicarFiltros}
+                style={{ height: "3.5rem", color: "#fff" }}
+                onClick={aplicar}
               >
                 Aplicar
               </button>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

@@ -72,35 +72,45 @@
     box-shadow: 0 0 0 0.05rem;
   }
   @media (max-width: 768px) {
-    .BotaoEnviar {
-      width: 100% !important;
-      font-size: 16px;
-      height: 3.5rem;
-    }
-  
     .FeedBack h1 {
-      font-size: 1.8rem;
-      text-wrap: wrap;
-      text-align: center;
+      font-size: 2rem;
     }
   
     .Principal {
-      padding: 1rem !important;
-    
-      box-shadow: 0 0 2px;
-margin-left: 1rem;
-      margin-right: 1rem;
+      margin: 1rem;
+      padding: 1.5rem;
+      max-width: 90%; 
     }
   
     .Form input,
     .Form textarea {
-      width: 100% !important;
       font-size: 14px;
       padding: 10px;
     }
   
     .Form textarea {
       height: 6rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .FeedBack h1 {
+      font-size: 1.6rem;
+    }
+  
+    .BotaoEnviar {
+      width: 16rem; /* permanece fixo */
+      height: 3.2rem;
+      font-size: 1rem;
+    }
+  
+    .Form input,
+    .Form textarea {
+      font-size: 13.5px;
+    }
+  
+    .Form textarea {
+      height: 6.5rem;
     }
   }
   
