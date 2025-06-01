@@ -1,7 +1,9 @@
-'use client'
+'use client';
 
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
+import Lottie from 'lottie-react';
+import animacaoFoguete from '/public/Animacao/AnimacaoFoguete.json';
 import './FaleConosco.css';
 
 export default function FaleConosco() {
@@ -11,9 +13,20 @@ export default function FaleConosco() {
     mensagem: ''
   });
 
+  const containerRef = useRef(null);
+  const lottieRef = useRef();
+  const isInView = useInView(containerRef, { once: false });
+
+  useEffect(() => {
+    if (isInView && lottieRef.current) {
+      lottieRef.current.stop();
+      lottieRef.current.play();
+    }
+  }, [isInView]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
@@ -22,19 +35,54 @@ export default function FaleConosco() {
   };
 
   return (
-    <div className="container FaleConosco">
-      <div className="row justify-content-end">
-      <motion.div
-  className="col-md-4 mt-5 Principal"
-  initial={{ x: 300, opacity: 0 }} // começa fora da tela, à direita
-  whileInView={{ x: 0, opacity: 1 }} // anima para a posição original
-  viewport={{ once: true, amount: 0.2 }} // ativa quando 30% visível
-  transition={{ duration: 0.9, ease: 'easeOut' }}
->
-          <div className="row">
-            <div className="col-md-12 mt-5 mb-1 FeedBack">
-              <h1>FeedBack</h1>
-            </div>
+    <div className="FaleConosco container mt-5 Texto" ref={containerRef}>
+      <div className="row ">
+
+        {/* Foguete + texto */}
+        <div className="col-md-8 text-start">
+          <motion.div
+            initial={{ y: 0, opacity: 0 }}
+            animate={isInView ? { y: -400, opacity: 0 } : { y: 0, opacity: 1 }}
+            transition={{ duration: 2, ease: 'easeInOut' }}
+            style={{
+              position: 'relative',
+              zIndex: 10,
+              pointerEvents: 'none',
+            }}
+          >
+            <Lottie
+              lottieRef={lottieRef}
+              animationData={animacaoFoguete}
+              loop={false}
+              autoplay={false}
+              style={{ height: 300 }}
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ y: 100 }}
+            animate={isInView ? { y: -270 } : {}}
+            transition={{ duration: 2, ease: 'easeOut' }}
+            className="Texto text-start ps-md-4"
+             style={{ alignSelf: 'flex-start' }} 
+          >
+            <h1>Tendo problemas ou dúvidas com algum curso?</h1>
+            <p>Temos uma equipe especializada preparada para te ajudar!</p>
+            <p>Mande sua mensagem e nós retornaremos em até 1 hora.</p>
+          </motion.div>
+
+        </div>
+
+        {/*Formulário */}
+        <motion.div
+          className="col-md-4"
+          initial={{ x: 300, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.9, ease: 'easeOut' }}
+        >
+          <div className="FeedBack mb-3">
+            <h1>Fale Conosco</h1>
           </div>
 
           <form onSubmit={handleSubmit}>
@@ -49,6 +97,7 @@ export default function FaleConosco() {
                 required
               />
             </div>
+
             <div className="form-group Form">
               <input
                 className="form-control"
@@ -60,6 +109,7 @@ export default function FaleConosco() {
                 required
               />
             </div>
+
             <div className="form-group Form">
               <textarea
                 className="form-control"
@@ -71,7 +121,12 @@ export default function FaleConosco() {
                 required
               />
             </div>
-            <button className="btn btn BotaoEnviar mt-3 mb-3" type="submit">Enviar</button>
+
+            <div className="BotaoEnviar">
+              <button className="btn btn mt-3 mb-3" type="submit">
+                Enviar
+              </button>
+            </div>
           </form>
         </motion.div>
       </div>

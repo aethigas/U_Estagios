@@ -1,34 +1,35 @@
-
-
-
-
-
-
 /* Fundo geral da seção de vagas */
 .background {
   width: 100%;
-  background-color: 	#616970;
-  /* #343a40 */
+  background-color: transparent;
+
+}
+
+.atronauta h1 {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2.5rem;
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: center;
 }
 .ConhecaVagas h1{
   color: #fff;
   font-weight: bold;
   font-size: 2.5rem;
   display: flex;
- text-wrap: nowrap;
- justify-content: center;
-
+  margin-bottom: 3rem;
+  justify-content: center;
 }
-
-
 
 /* Título da vaga */
 .container h5 {
   font-size: clamp(1.5rem, 3vw, 1.5rem);
   font-weight: bold;
-  color:   #000;
+  color: #000;
 }
-.container h6{
+
+.container h6 {
   font-size: clamp(1rem, 3vw, 1rem);
 }
 
@@ -39,14 +40,16 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.3s;
 }
-.custom-card:hover{
+
+.custom-card:hover {
   transform: scale(1.02);
 }
 
 /* Texto informativo nos cards */
 .TextoCards {
-  margin: 0.4rem ;
+  margin: 0.4rem;
   font-weight: 500;
 }
 
@@ -64,7 +67,6 @@
   margin-right: 5px;
   width: 20px;
   height: 20px;
-
 }
 
 /* Conteúdo do Modal */
@@ -73,7 +75,6 @@
   max-height: 35vh;
   margin-bottom: 0.5rem;
   overflow-y: auto;
-
 }
 
 .ConteudoModal p {
@@ -99,7 +100,7 @@
 
 /* Botão "Carregar mais" */
 .BotaoVerMais button {
-  background-color: #003366;
+  background-color: #148a9d;
   color: #fff;
   width: 16rem;
   height: 4rem;
@@ -108,8 +109,9 @@
   transition: 0.1s ease;
   margin-bottom: 1rem;
 }
-.BotaoVerMais button:hover{
-  background-color:#263a89;;
+
+.BotaoVerMais button:hover {
+  background-color: #17a2b8;
   color: #fff;
 }
 
@@ -117,7 +119,7 @@
 .BotaoXModal button {
   width: 3rem;
   height: 3rem;
-  border: 2px solid #263a89;;
+  border: 2px solid #148a9d;
   padding: 0.5rem;
   outline: none;
   opacity: 1;
@@ -125,21 +127,15 @@
   background-color: transparent;
 }
 
-/* Foco no botão de fechar */
 .BotaoXModal button:focus {
-  background-color: #003366;
-  box-shadow: 0 0 0 0.2rem rgba(8, 95, 38, 0.5);
+  background-color: #148a9d;
 }
 
-/* Clique ativo */
 .BotaoXModal button:active {
-  background-color: #263a89;;
-  border-color:  #003366;
+  background-color: #148a9d;
+  border-color: #148a9d;
   transform: scale(0.98);
 }
-
-
-
 
 /* Responsividade para tablets */
 @media (max-width: 992px) {
@@ -151,28 +147,65 @@
     font-size: 15px;
   }
 
-  .BotaoModal button {
+  .BotaoModal {
     width: 100% !important;
   }
 }
 
-/* astronauta */
-/* From Uiverse.io by JkHuger */ 
-@keyframes snow {
-  0% {
-    opacity: 0;
-    transform: translateY(0px);
+/* Responsividade para celulares */
+@media (max-width: 768px) {
+  .CardVagas {
+    flex-direction: column !important;
+    align-items: center !important;
   }
 
-  20% {
-    opacity: 1;
+  .custom-card {
+    width: 90% !important;
+    margin: 1rem 0 !important;
+    padding: 1rem;
   }
 
-  100% {
-    opacity: 1;
-    transform: translateY(650px);
+  .TextoCards {
+    font-size: 16px;
+    margin: 1rem 0 0 0;
+  }
+
+  .ConteudoModal {
+    font-size: 15px;
+    padding: 1rem;
+  }
+
+  .modal-dialog {
+    margin: 1rem;
+  }
+
+  .BotaoVerMais button {
+    width: 90% !important;
+    height: 3rem;
+    font-size: 0.95rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .BotaoCards {
+    font-size: 16px;
+    width: 100% !important;
+  }
+
+  .BotaoXModal button {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .ConhecaVagas h1 {
+    font-size: 2rem;
   }
 }
+
+
+
+
+
+/* astronauta */
 
 @keyframes astronaut {
   0% {
@@ -183,113 +216,12 @@
     transform: rotate(360deg);
   }
 }
-
-.box-of-star1,
-.box-of-star2,
-.box-of-star3,
-.box-of-star4 {
-  width: 100%;
-  position: absolute;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  transform: translateY(0px);
-  height: 700px;
-}
-
-.box-of-star1 {
-  animation: snow 5s linear infinite;
-}
-
-.box-of-star2 {
-  animation: snow 5s -1.64s linear infinite;
-}
-
-.box-of-star3 {
-  animation: snow 5s -2.30s linear infinite;
-}
-
-.box-of-star4 {
-  animation: snow 5s -3.30s linear infinite;
-}
-
-.star {
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background-color: #FFF;
-  position: absolute;
-  z-index: 10;
-  opacity: 0.7;
-}
-
-.star:before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background-color: #FFF;
-  position: absolute;
-  z-index: 10;
-  top: 80px;
-  left: 70px;
-  opacity: .7;
-}
-
-.star:after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #FFF;
-  position: absolute;
-  z-index: 10;
-  top: 8px;
-  left: 170px;
-  opacity: .9;
-}
-
-.star-position1 {
-  top: 30px;
-  left: 20px;
-}
-
-.star-position2 {
-  top: 110px;
-  left: 250px;
-}
-
-.star-position3 {
-  top: 60px;
-  left: 570px;
-}
-
-.star-position4 {
-  top: 120px;
-  left: 900px;
-}
-
-.star-position5 {
-  top: 20px;
-  left: 1120px;
-}
-
-.star-position6 {
-  top: 90px;
-  left: 1280px;
-}
-
-.star-position7 {
-  top: 30px;
-  left: 1480px;
-}
-
 .astronaut {
   width: 250px;
   height: 300px;
-  position: absolute;
-  z-index: 11;
-  top: calc(50% - 150px);
+  position: relative;
+  
+  top: calc(50% - 200px);
   left: calc(50% - 125px);
   animation: astronaut 5s linear infinite;
 }
@@ -339,7 +271,7 @@
   box-shadow: 92px 0px 0px #618095;
 }
 
-.ConhecaVagas .astronauta {
+.body {
   width: 85px;
   height: 100px;
   position: absolute;
@@ -485,60 +417,3 @@
   border-radius: 0 30px 0 0;
   border-bottom: 10px solid #b0cfe4;
 }
-
-/* Responsividade para celulares */
-@media (max-width: 768px) {
-  .CardVagas {
-    flex-direction: column !important;
-    align-items: center !important;
-  }
-
-  .custom-card {
-    width: 90% !important;
-    margin: 1rem 0 !important;
-    padding: 1rem;
-  }
-
-  .TextoCards {
-    font-size: 16px;
-    margin: 1rem 0 0 0;
-  }
-
-  .ConteudoModal {
-    font-size: 15px;
-    padding: 1rem;
-  }
-
-  .modal-dialog {
-    margin: 1rem;
-  }
-
-  .BotaoVerMais button {
-    width: 90% !important;
-    height: 3rem;
-    font-size: 0.95rem;
-    padding: 0.5rem 1rem;
-
-  }
-
-  .BotaoCards {
-    font-size: 16px;
-    width: 100% !important;
-  }
-
-  .BotaoXModal button {
-    width: 3rem;
-    height: 3rem;
-  }
-  .ConhecaVagas h1{
- 
-
-    font-size: 2rem;
-
-  
-  }
-}
-
-
-
-

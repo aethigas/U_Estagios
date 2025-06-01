@@ -26,13 +26,16 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
   }, [filtros]);
 
   const aplicar = () => {
-    if (typeof onAplicarFiltros === "function") {
-      onAplicarFiltros(filtrosLocais);
-    } else {
-      console.warn("onAplicarFiltros não foi fornecido");
-    }
-  };
-  
+  if (typeof onAplicarFiltros === "function") {
+    onAplicarFiltros(filtrosLocais);
+  } else {
+    console.warn("onAplicarFiltros não foi fornecido");
+  }
+
+  // Fechar o menu mobile após aplicar os filtros
+  setMenuOpen(false);
+};
+
  
 
   const [dropdownAberto, setDropdownAberto] = useState(null);
@@ -116,14 +119,14 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
           right: menuOpen ? "0" : "auto",
           zIndex: menuOpen ? 1100 : "auto",
           width: "100%",
-          backgroundColor: menuOpen ? "transparent" : "#6c757d",
+          backgroundColor: menuOpen ? "transparent" : "transparent",
         }}
       >
         <button
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir/Fechar filtros"
           style={{
-            backgroundColor: "#003366",
+            backgroundColor: "#148a9d;",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "4px",
@@ -228,13 +231,16 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
               </div>
 
               <div className="col-12 text-end">
-                <button
-                  className="btn btn-primary w-100 mt-custom"
+                <div className="BotaoAplicar">
+                  <button
+                  className="btn btn w-100 mt-custom"
                   style={{ height: "3.5rem", color: "#fff" }}
                   onClick={aplicar}
                 >
                   Aplicar
-                </button>
+                </button>  
+                </div>
+              
               </div>
             </div>
           </div>
@@ -244,6 +250,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
       {/* Filtros desktop */}
       <div className="formVagas d-none d-md-block" ref={wrapperRef}>
         <div className="container py-4 text-center">
+          <h1> Filtre e encontre a melhor vaga para você</h1>
           <motion.div
             className="row mb-3 justify-content-center"
             initial={{ opacity: 0, y: -60 }}
@@ -296,13 +303,16 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
             </div>
 
             <div className="col-md-2 col-12 text-end">
-              <button
-                className="btn btn w-100 mt-custom"
+              <div className="BotaoAplicar">
+                   <button
+                className="btn btn w-100 "
                 style={{ height: "3.5rem", color: "#fff" }}
                 onClick={aplicar}
               >
                 Aplicar
               </button>
+              </div>
+           
             </div>
           </motion.div>
         </div>

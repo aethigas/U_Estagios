@@ -1,5 +1,10 @@
-.elements1  {
-    justify-content: flex-start;
-    display: flex;
-    text-align: left;
+footer {
+  background-color: rgba(0, 0, 0, 0.6);         /* Fundo mais escuro e mais opaco */
+  backdrop-filter: blur(12px) brightness(1.2);  /* Blur mais forte + brilho leve */
+  -webkit-backdrop-filter: blur(12px) brightness(1.2); /* Safari */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Sombra mais evidente */
+
+  top: 0;
+  z-index: 1000;
 }
+

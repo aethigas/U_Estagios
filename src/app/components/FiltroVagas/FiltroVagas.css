@@ -3,7 +3,9 @@
 
 .formVagas {
   width: 100%; 
-  background-color:#6c757d; 
+  background-color:transparent; 
+  z-index: 1;
+
 
 }
 /* Títulos */
@@ -13,14 +15,22 @@
   text-align: start;
   color: #fff;
 }
+.formVagas h1 {
+  color: #fff;
+  font-weight: bold;
+  font-size: 2rem;
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
 
 /* Botão aplicar */
- .mt-custom {
+ .BotaoAplicar button {
   margin-top: 2rem;
-  background-color: #003366;
+  background-color: #148a9d;;
 }
- .mt-custom:hover {
-  background-color: #263a89;
+ .BotaoAplicar button:hover {
+  background-color: #17a2b8;
 }
 
 /* Inputs de texto */

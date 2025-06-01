@@ -1,11 +1,19 @@
-"use client";
-import './CarroselPrincipal.css'
+'use client';
+
+import './CarroselPrincipal.css';
+import { motion } from 'framer-motion';
 
 export default function CarroselPrincipal() {
-  const imagens = ["/banner1.jpeg", "/banner2.png", "/banner3.png"];
+  const imagens = ["/paisagem1.webp", "/paisagem2.jpeg", "/paisagem3.webp"];
 
   return (
-    <div className="row justify-content-center">
+    <motion.div
+      className="row justify-content-center"
+      initial={{ opacity: 0, y: 50 }} // Começa invisível e abaixo
+      whileInView={{ opacity: 1, y: 0 }} // Quando entra na tela
+      transition={{ duration: 0.8, ease: 'easeOut' }}
+      viewport={{ once: true, amount: 0.2 }} // Só anima 1x, quando 20% estiver visível
+    >
       <div className="col-md-12">
         <div
           id="carouselExampleFade"
@@ -48,6 +56,6 @@ export default function CarroselPrincipal() {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
