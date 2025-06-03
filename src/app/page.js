@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 import Header from './components/Layout/Header/Header.jsx'
 import Footer from './components/Layout/Footer/Footer.jsx'
 import CarroselPrincipal from './components/Carrosel/CarroselPrincipal.jsx'
@@ -10,7 +11,7 @@ import './home.css'
 
 // Componente React que cria estrelas caindo infinitamente no fundo da tela
 function EstrelasCaindo() {
-  const starsCount = 5000; // Define quantas estrelas serão criadas
+  const starsCount = 1000; // Define quantas estrelas serão criadas
   const stars = [];      // Array onde vamos armazenar os elementos JSX das estrelas
 
   // Função auxiliar para gerar um número aleatório entre dois valores
@@ -74,6 +75,20 @@ function EstrelasCaindo() {
     </div>
   );
 }
+function VitrineDeVagas() {
+
+
+  return (
+    <div 
+      className="container Vitrine" 
+    
+        >
+          <h1>Vitrine de Vagas</h1>
+      
+    </div>
+  );
+}
+
 
 export default function Home() {
   return (
@@ -81,11 +96,13 @@ export default function Home() {
       <EstrelasCaindo />
 
       <Header />
-      {/* <CarroselPrincipal /> */}
+      <CarroselPrincipal />
+      <VitrineDeVagas/>
+
       <VagasSection />
       <CardInformacoes />
       <FaleConosco />
-      <Footer />
+      {/* <Footer /> */}
     </>
   )
 }

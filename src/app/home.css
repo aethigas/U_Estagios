@@ -3,7 +3,17 @@ body {
   margin: 0;
   overflow-x: hidden; /* evita que qualquer coisa passe da largura da tela */
 }
+.Vitrine{
+  background-color: #FFF;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
 
+  height: 6rem;
+}
+.Vitrine h1{
+  color: #FFF;
+}
 
 
 @keyframes fall {

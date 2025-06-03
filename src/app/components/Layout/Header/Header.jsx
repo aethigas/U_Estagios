@@ -24,7 +24,8 @@ export default function Header() {
               )}
             </svg>
           </button>
-        <img src="/logoSemFundo.png" alt="logo"  className="logo"/>
+        <img src="/logo.png" alt="logo"  className="logo"/>
+       
           <ul className={`menu ${menuOpen ? "open" : ""}`}>
         
             <li><a href="#">Home</a></li>

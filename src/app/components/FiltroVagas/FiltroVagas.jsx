@@ -126,7 +126,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir/Fechar filtros"
           style={{
-            backgroundColor: "#148a9d;",
+            backgroundColor: "#148a9d",
             border: "none",
             padding: "0.5rem 1rem",
             borderRadius: "4px",

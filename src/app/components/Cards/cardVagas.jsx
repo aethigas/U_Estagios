@@ -7,20 +7,11 @@ import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function CardVagas({ vagas }) {
-
   const [visibleCount, setVisibleCount] = useState(6);
   const [modalVisible, setModalVisible] = useState(false);
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
 
 
-  // // Carregar as vagas da API (simulação de fetch)
-  // useEffect(() => {
-  //   // Simulação de chamada à API para buscar as vagas
-  //   fetch("http://jsonplaceholder.typicode.com/vagas") // Altere para a URL real da sua API
-  //     .then((res) => res.json())
-  //     .then((data) => setVagas(data))
-  //     .catch((err) => console.error("Erro ao carregar vagas:", err));
-  // }, []);
 
   const handleToggle = (action) => {
     if (action === "more" && visibleCount < vagas.length) {
@@ -41,7 +32,7 @@ export default function CardVagas({ vagas }) {
   };
 
   return (
-    <section className="background" >
+    <section className="background">
       <motion.div
         className="container"
         initial={{ opacity: 0, y: 80 }}
@@ -49,14 +40,10 @@ export default function CardVagas({ vagas }) {
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-
         <div className="row">
           <div className="col-md-12 mt-4 mb-4 ConhecaVagas">
             {vagas.length === 0 ? (
-
-
               <div className="atronauta">
-
                 <div data-js="astro" className="astronaut">
                   <div className="head"></div>
                   <div className="arm arm-left"></div>
@@ -69,16 +56,12 @@ export default function CardVagas({ vagas }) {
                   <div className="schoolbag"></div>
                 </div>
 
-
                 <h1> Desculpe! Não encontramos vagas no momento.</h1>
-
               </div>
             ) : (
               <h1>Conheça nossas vagas</h1>
             )}
           </div>
-
-
         </div>
 
         <div className="Cards">
@@ -86,13 +69,15 @@ export default function CardVagas({ vagas }) {
             <div className="col-md-12 mb-5 CardVagas d-flex flex-wrap justify-content-center">
               {vagas.slice(0, visibleCount).map((vaga, index) => (
                 <motion.div
-                  key={index}
+                  key={vaga.id || index} // prefira ID, senão índice
                   className="card m-2 mt-3 mb-2 custom-card"
                   initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.03 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.0, delay: index * 0.1 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: Math.min(index, 10) * 0.1,
+                  }}
                 >
                   <div className="card-body">
                     <h5 className="card-title">{vaga.titulo}</h5>
@@ -228,11 +213,8 @@ export default function CardVagas({ vagas }) {
               </div>
             </motion.div>
           </motion.div>
-
         )}
       </AnimatePresence>
-
-
 
       {/* Botões Ver Mais e Ver Menos */}
       <div className="text-center mt-1 BotaoVerMais">
@@ -253,8 +235,6 @@ export default function CardVagas({ vagas }) {
           </button>
         )} */}
       </div>
-
-
     </section>
   );
 }
