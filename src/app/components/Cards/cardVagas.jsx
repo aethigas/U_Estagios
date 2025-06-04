@@ -75,8 +75,8 @@ export default function CardVagas({ vagas }) {
                   animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.03 }}
                   transition={{
-                    duration: 0.6,
-                    delay: Math.min(index, 10) * 0.1,
+                    duration: 0,
+                    delay: Math.min(index, 10) * 0,
                   }}
                 >
                   <div className="card-body">

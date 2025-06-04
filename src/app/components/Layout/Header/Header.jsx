@@ -24,7 +24,7 @@ export default function Header() {
               )}
             </svg>
           </button>
-        <img src="/logo.png" alt="logo"  className="logo"/>
+        <img src="/Astronautas/AstronautaLogo.png" alt="logo"  className="logo"/>
        
           <ul className={`menu ${menuOpen ? "open" : ""}`}>
         

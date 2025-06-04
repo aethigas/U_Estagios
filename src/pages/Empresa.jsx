@@ -1,8 +1,17 @@
-import { VagaEmpresaCard } from '../components/VagaEmpresaCard.jsx';
+import CardVagas from "@/app/components/Cards/cardVagas";
+import CardVagasEmpresa from "@/app/components/Cards/VagaEmpresaCard";
+import VagasSection from "@/app/components/Sections/VagasSection";
+import EstrelasCaindo from "@/app/components/EstrelasFundo/EstrelasCaindo";
 
-<VagaEmpresaCard
-  vaga={vaga}
-  contexto="empresa"
-  onEditar={(id) => router.push(`/empresa/editar/${id}`)}
-  onExcluir={deletarVaga}
-/>
+
+
+
+
+export default function Empresa(){
+return  (
+  <>
+  <EstrelasCaindo></EstrelasCaindo>
+<CardVagasEmpresa></CardVagasEmpresa>
+  </>
+)
+}

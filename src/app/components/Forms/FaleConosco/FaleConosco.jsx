@@ -34,7 +34,7 @@ export default function FaleConosco() {
     console.log("Dados do formulário:", formData);
   };
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const duration = isMobile ? 10 : 1.7;  // mais tempo no mobile, 1.7 para desktop
+  const duration = isMobile ? 2 : 2;  // mais tempo no mobile, 1.7 para desktop
   // const decolar = isMobile ? 1.5 : 2;
 
 
@@ -72,7 +72,7 @@ export default function FaleConosco() {
             <h1>Tendo problemas ou dúvidas com algum curso?</h1>
 
             <p>Temos uma equipe especializada preparada para te ajudar!</p>
-            <p>Mande sua mensagem e nós responderemos em até 1 hora.</p>
+           
           </motion.div>
         </div>
         <motion.div
@@ -85,9 +85,9 @@ export default function FaleConosco() {
           <img src="/astronautas/AstronautaDuvidas.png" alt="localização" />
         </motion.div>
 
-        {/* Formulário */}
-        <motion.div
-         className="col-12 col-md-4"
+   {/* Formulário */}
+   <motion.div
+         className="col-12 col-md-6 Formulario"
          initial={{ x: -300, opacity: 0 }}
          whileInView={{ x: 0, opacity: 1 }}
          viewport={{ once: false, amount: 0.1 }}
@@ -142,6 +142,9 @@ export default function FaleConosco() {
           </form>
         
         </motion.div>
+
+
+       
       </div>
     </div>
   );

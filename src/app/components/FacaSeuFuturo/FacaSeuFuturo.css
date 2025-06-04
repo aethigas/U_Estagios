@@ -1,0 +1,15 @@
+
+
+.Futuro h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: start !important;
+    color: #fff;
+    white-space: normal;}
+  
+    .AstronautaFuturo img{
+        width: 30rem;
+       
+        position: relative;
+      
+      }
