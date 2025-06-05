@@ -28,7 +28,7 @@ export default function Header() {
        
           <ul className={`menu ${menuOpen ? "open" : ""}`}>
         
-            <li><a href="#">Home</a></li>
+            <li><a href="/page">Home</a></li>
             <li><a href="#Vagas">Vitrine de Vagas</a></li>
 
             <li><a href="#">Sobre nós</a></li>

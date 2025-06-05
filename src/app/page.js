@@ -24,10 +24,10 @@ export default function Home() {
       <EstrelasCaindo />
 
       <Header />
-      <CarroselPrincipal />
+      
       <FacaSeuFurturo/>
       {/* <VitrineDeVagas/> */}
-
+{/* <CarroselPrincipal /> */}
       <VagasSection />
       <CardInformacoes />
       <FaleConosco />

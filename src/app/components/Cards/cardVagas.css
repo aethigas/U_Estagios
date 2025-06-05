@@ -7,7 +7,7 @@
 
 .atronauta h1 {
   color: #fff;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 2.5rem;
   display: flex;
   margin-bottom: 3rem;
@@ -15,7 +15,7 @@
 }
 .ConhecaVagas h1{
   color: #fff;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 2.5rem;
   display: flex;
   margin-bottom: 3rem;
@@ -25,7 +25,7 @@
 /* Título da vaga */
 .container h5 {
   font-size: clamp(1.5rem, 3vw, 1.5rem);
-  font-weight: bold;
+  font-weight: 500;
   color: #000;
 }
 

@@ -1,4 +1,5 @@
 import React from "react";
+import './Estrelas.css'
 
 // Componente React que cria estrelas caindo infinitamente no fundo da tela
  export default function EstrelasCaindo() {
