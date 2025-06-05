@@ -44,6 +44,14 @@
     --ColorsBlue900: #001331;
     -font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
+/* globals.css */
+body {
+  background-color: black;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: Poppins;
+}
+
 
 
 }

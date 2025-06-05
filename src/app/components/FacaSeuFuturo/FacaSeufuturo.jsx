@@ -10,7 +10,7 @@ export default function FacaSeuFurturo() {
                 
                 {/* Imagem com animação de baixo para cima */}
                 <motion.div
-                    className='col-md-6 AstronautaFuturo'
+                    className='col-12 col-md-6 col-md-2 AstronautaFuturo'
                     initial={{ y: 100, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 1, ease: 'easeOut' }}

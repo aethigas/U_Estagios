@@ -6,7 +6,7 @@ import EmpresaVagas from "../components/EmpresaVagas/EmpresaVagas";
 export default function EmpresaPage() {
   return (
     <>
-    <Header/>
+      <Header/>
       <EstrelasCaindo />
       <EmpresaVagas></EmpresaVagas>
     </>

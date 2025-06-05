@@ -17,7 +17,6 @@
 /* Responsividade */
 @media (max-width: 992px) {
   .Futuro h1{
-
   
     font-size: 2rem;
     max-width: 100%;
@@ -48,7 +47,7 @@
 }
 
 @media (max-width: 576px) {
-  .futuro h1 {
+  .Futuro h1 {
     font-size: 1.6rem;
   }
 

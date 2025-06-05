@@ -18,22 +18,22 @@ export default function VagasSection() {
   useEffect(() => {
     async function fetchVagas() {
       try {
-        const res = await fetch('http://localhost:3001/api/vagas');
+        const res = await fetch("http://localhost:3001/api/vagas");
         const data = await res.json();
-  
+
         // Se atividades e requisitos vierem como strings separadas por vírgula
         const vagasFormatadas = data.map((vaga) => ({
           ...vaga,
-          atividades: vaga.atividades?.split(',') || [],
-          requisitos: vaga.requisitos?.split(',') || [],
+          atividades: vaga.atividades?.split(",") || [],
+          requisitos: vaga.requisitos?.split(",") || [],
         }));
-  
+
         setVagas(vagasFormatadas);
       } catch (error) {
-        console.error('Erro ao buscar vagas:', error);
+        console.error("Erro ao buscar vagas:", error);
       }
     }
-  
+
     fetchVagas();
   }, []);
   const aplicarFiltros = (filtrosAtualizados) => {
@@ -41,19 +41,44 @@ export default function VagasSection() {
   };
 
   const vagasFiltradas = vagas.filter((vaga) => {
-    const tipoOK = filtros.tipoDeVaga === "1" || vaga.tipoDeVaga === filtros.tipoDeVaga;
-    const areaOK = filtros.areaProfissional === "1" || vaga.areaProfissional === filtros.areaProfissional;
-    const cidadeOK = !filtros.cidade || vaga.localizacao.toLowerCase().includes(filtros.cidade.toLowerCase());
-    const estadoOK = !filtros.estado || (vaga.estado && vaga.estado.toLowerCase().includes(filtros.estado.toLowerCase()));
-    const vagaOK = !filtros.vaga || vaga.titulo.toLowerCase().includes(filtros.vaga.toLowerCase());
-  
+    const tipoOK =
+      filtros.tipoDeVaga === "1" || vaga.tipoDeVaga === filtros.tipoDeVaga;
+    const areaOK =
+      filtros.areaProfissional === "1" ||
+      vaga.areaProfissional === filtros.areaProfissional;
+    const cidadeOK =
+      !filtros.cidade ||
+      vaga.localizacao.toLowerCase().includes(filtros.cidade.toLowerCase());
+    const estadoOK =
+      !filtros.estado ||
+      (vaga.estado &&
+        vaga.estado.toLowerCase().includes(filtros.estado.toLowerCase()));
+    const vagaOK =
+      !filtros.vaga ||
+      vaga.titulo.toLowerCase().includes(filtros.vaga.toLowerCase());
+
     return tipoOK && areaOK && cidadeOK && estadoOK && vagaOK;
   });
-  
 
   return (
     <>
       <FiltroDeVagas filtros={filtros} onAplicarFiltros={aplicarFiltros} />
+      <div className="row">
+        <div className="col-md-12 mt-4 mb-4 ">
+          <h1
+            style={{
+              color: "#fff",
+              fontWeight: "500",
+              fontSize: "2.5rem",
+              display: "flex",
+  
+              justifyContent: "center",
+            }}
+          >
+            Conheça nossas vagas
+          </h1>
+        </div>
+      </div>
       <CardVagas vagas={vagasFiltradas} />
     </>
   );

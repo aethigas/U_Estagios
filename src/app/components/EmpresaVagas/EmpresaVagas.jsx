@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 import "./Empresa.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-const gerarId = () =>
-  Date.now().toString() + Math.floor(Math.random() * 1000);
+const gerarId = () => Date.now().toString() + Math.floor(Math.random() * 1000);
 
 export default function EmpresaVagas() {
   const [vagas, setVagas] = useState([]);
@@ -24,22 +24,22 @@ export default function EmpresaVagas() {
   useEffect(() => {
     async function fetchVagas() {
       try {
-        const res = await fetch('http://localhost:3001/api/vagas');
+        const res = await fetch("http://localhost:3001/api/vagas");
         const data = await res.json();
-  
+
         // Se atividades e requisitos vierem como strings separadas por vírgula
         const vagasFormatadas = data.map((vaga) => ({
           ...vaga,
-          atividades: vaga.atividades?.split(',') || [],
-          requisitos: vaga.requisitos?.split(',') || [],
+          atividades: vaga.atividades?.split(",") || [],
+          requisitos: vaga.requisitos?.split(",") || [],
         }));
-  
+
         setVagas(vagasFormatadas);
       } catch (error) {
-        console.error('Erro ao buscar vagas:', error);
+        console.error("Erro ao buscar vagas:", error);
       }
     }
-  
+
     fetchVagas();
   }, []);
   const handleChange = (e) => {
@@ -99,8 +99,16 @@ export default function EmpresaVagas() {
         setInscritos({
           ...inscritos,
           [vagaId]: [
-            { nome: "João da Silva", email: "joao@email.com", telefone: "(11) 99999-0000" },
-            { nome: "Maria Oliveira", email: "maria@email.com", telefone: "(21) 88888-1111" },
+            {
+              nome: "João da Silva",
+              email: "joao@email.com",
+              telefone: "(11) 99999-0000",
+            },
+            {
+              nome: "Maria Oliveira",
+              email: "maria@email.com",
+              telefone: "(21) 88888-1111",
+            },
           ],
         });
       }
@@ -111,34 +119,49 @@ export default function EmpresaVagas() {
 
   return (
     <div className="empresa-vagas container py-5">
-      <h1 className="mb-4">Gerenciar Vagas</h1>
+      <h1 className="mb-4">Gerenciar vagas</h1>
 
       {/* Formulário */}
-      <div className="card p-4 mb-5">
-        <h5>{editId ? "Editar Vaga" : "Adicionar Nova Vaga"}</h5>
-        <div className="row">
-          {Object.keys(form).map((key) => (
-            <div className="col-md-6 mb-3" key={key}>
-              <input
-                type="text"
-                name={key}
-                value={form[key]}
-                onChange={handleChange}
-                placeholder={key[0].toUpperCase() + key.slice(1)}
-                className="form-control"
-              />
-            </div>
-          ))}
+      <div className="row"> 
+        <div className="col-md-6 AstronautaEditar">
+          <img src="/Astronautas/AstronautaEditar.png" alt="editar" />
         </div>
-        <button onClick={adicionarOuEditarVaga} className="btn btn-primary">
-          {editId ? "Atualizar Vaga" : "Adicionar Vaga"}
-        </button>
+        <div className="Formulario col-md-6 card p-4 mb-5">
+          <div className="FormularioTitulo">
+            <h1>{editId ? "Editar vagas" : "Adicionar nova vaga"}</h1>
+          </div>
+
+          <form className="Form">
+            <div className="row">
+              {Object.keys(form).map((key) => (
+                <div className="col-md-6 mb-3" key={key}>
+                  <input
+                    type="text"
+                    name={key}
+                    value={form[key]}
+                    onChange={handleChange}
+                    placeholder={key[0].toUpperCase() + key.slice(1)}
+                  />
+                </div>
+              ))}
+            </div>
+
+            <div className="BotaoEnviar">
+              <button type="button" onClick={adicionarOuEditarVaga}>
+                {editId ? "Atualizar Vaga" : "Adicionar Vaga"}
+              </button>
+            </div>
+          </form>
+        </div>
+
+       
       </div>
 
       {/* Listagem de Vagas */}
       <div className="row">
+        <h1>Vagas ativas</h1>
         {vagas.map((vaga) => (
-          <div className="col-md-6 mb-4" key={vaga.id}>
+          <div className="col-md-4 mb-4" key={vaga.id}>
             <div className="card p-3">
               <h5>{vaga.titulo}</h5>
               <p>{vaga.descricao}</p>
@@ -147,7 +170,8 @@ export default function EmpresaVagas() {
                   <strong>Área:</strong> {vaga.area}
                 </li>
                 <li>
-                  <strong>Localização:</strong> {vaga.localizacao} - {vaga.estado}
+                  <strong>Localização:</strong> {vaga.localizacao} -{" "}
+                  {vaga.estado}
                 </li>
                 <li>
                   <strong>Horário:</strong> {vaga.horario}

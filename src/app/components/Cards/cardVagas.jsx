@@ -1,27 +1,32 @@
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import "./CardVagas.css";
-import Link from "next/link";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Link from 'next/link';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './CardVagas.css';
 
-export default function CardVagas({ vagas }) {
-  const [visibleCount, setVisibleCount] = useState(6);
+export default function CardVagas({
+  vagas = [],
+
+  exibirModal = true,
+  botaoPersonalizado, // opcional: botão externo
+  limiteInicial = 6, // quantos cards exibir inicialmente
+}) {
+  const [visibleCount, setVisibleCount] = useState(limiteInicial);
   const [modalVisible, setModalVisible] = useState(false);
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
 
-
-
   const handleToggle = (action) => {
-    if (action === "more" && visibleCount < vagas.length) {
+    if (action === 'more' && visibleCount < vagas.length) {
       setVisibleCount((prev) => Math.min(prev + 6, vagas.length));
-    } else if (action === "less" && visibleCount > 6) {
-      setVisibleCount((prev) => Math.max(prev - 6, 6));
+    } else if (action === 'less' && visibleCount > limiteInicial) {
+      setVisibleCount((prev) => Math.max(prev - 6, limiteInicial));
     }
   };
 
   const abrirModal = (vaga) => {
+    if (!exibirModal) return;
     setVagaSelecionada(vaga);
     setModalVisible(true);
   };
@@ -38,13 +43,13 @@ export default function CardVagas({ vagas }) {
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.6, ease: 'easeOut' }}
       >
         <div className="row">
           <div className="col-md-12 mt-4 mb-4 ConhecaVagas">
             {vagas.length === 0 ? (
               <div className="atronauta">
-                <div data-js="astro" className="astronaut">
+                <div className="astronaut">
                   <div className="head"></div>
                   <div className="arm arm-left"></div>
                   <div className="arm arm-right"></div>
@@ -55,11 +60,10 @@ export default function CardVagas({ vagas }) {
                   <div className="leg leg-right"></div>
                   <div className="schoolbag"></div>
                 </div>
-
                 <h1> Desculpe! Não encontramos vagas no momento.</h1>
               </div>
             ) : (
-              <h1>Conheça nossas vagas</h1>
+             null
             )}
           </div>
         </div>
@@ -69,48 +73,45 @@ export default function CardVagas({ vagas }) {
             <div className="col-md-12 mb-5 CardVagas d-flex flex-wrap justify-content-center">
               {vagas.slice(0, visibleCount).map((vaga, index) => (
                 <motion.div
-                  key={vaga.id || index} // prefira ID, senão índice
+                  key={vaga.id || index}
                   className="card m-2 mt-3 mb-2 custom-card"
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   whileHover={{ scale: 1.03 }}
-                  transition={{
-                    duration: 0,
-                    delay: Math.min(index, 10) * 0,
-                  }}
+                  transition={{ duration: 0.1 }}
                 >
                   <div className="card-body">
                     <h5 className="card-title">{vaga.titulo}</h5>
                     <h6 className="decription">{vaga.descricao}</h6>
                     <div className="card-text TextoCards">
                       <div className="card-info-item">
-                        <img src="/IconsCards/str.png" alt="estrela" />{" "}
-                        {vaga.area}
+                        <img src="/IconsCards/star.png" alt="estrela" /> {vaga.area}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/locatn.png" alt="localização" />{" "}
-                        {vaga.localizacao} - {vaga.estado}
+                        <img src="/IconsCards/location.png" alt="localização" /> {vaga.localizacao} - {vaga.estado}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/clo-4.png" alt="relógio" />{" "}
-                        {vaga.horario}
+                        <img src="/IconsCards/clock.png" alt="relógio" /> {vaga.horario}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/doll-circle.png" alt="dólar" />{" "}
-                        {vaga.salario}
+                        <img src="/IconsCards/dollar.png" alt="dólar" /> {vaga.salario}
                       </div>
                     </div>
-                    <button
-                      onClick={() => abrirModal(vaga)}
-                      className="btn btn BotaoCards mt-2"
-                      style={{
-                        borderColor: "#148a9d",
-                        color: "#000",
-                        border: "2px solid #148a9d",
-                      }}
-                    >
-                      Ver Detalhes
-                    </button>
+                    {botaoPersonalizado ? (
+                      botaoPersonalizado(vaga)
+                    ) : (
+                      <button
+                        onClick={() => abrirModal(vaga)}
+                        className="btn btn BotaoCards mt-2"
+                        style={{
+                          borderColor: '#148a9d',
+                          color: '#000',
+                          border: '2px solid #148a9d',
+                        }}
+                      >
+                        Ver Detalhes
+                      </button>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -118,97 +119,77 @@ export default function CardVagas({ vagas }) {
           </div>
         </div>
       </motion.div>
+
+      {/* Modal de detalhes */}
       <AnimatePresence>
-        {/* Modal em React */}
-        {modalVisible && vagaSelecionada && (
+        {exibirModal && modalVisible && vagaSelecionada && (
           <motion.div
             className="modal fade show d-block"
             tabIndex="-1"
-            style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+            style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.1 }}
           >
             <motion.div
               className="modal-dialog modal-md modal-dialog-centered modal-dialog-scrollable"
               initial={{ scale: 0.95, opacity: 0, y: 50 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.95, opacity: 0, y: 50 }}
-              transition={{ duration: 0.3 }}
+              exit={{ scale: 0.95, opacity: 0, y: 0 }}
+              transition={{ duration: 0 }}
             >
-              <div className="modal-content ">
+              <div className="modal-content">
                 <div className="modal-header BotaoXModal">
-                  <button
-                    type="button"
-                    className="btn-close "
-                    onClick={fecharModal}
-                  ></button>
+                  <button type="button" className="btn-close" onClick={fecharModal}></button>
                 </div>
-
                 <div className="modal-body ConteudoModal">
                   <h5 className="modal-title">{vagaSelecionada.titulo}</h5>
                   <h6 className="decription">{vagaSelecionada.descricao}</h6>
                   <p>
-                    <img src="/IconsCards/star.png" alt="estrela" />{" "}
-                    {vagaSelecionada.area}
+                    <img src="/IconsCards/star.png" alt="estrela" /> {vagaSelecionada.area}
                   </p>
                   <p>
-                    <img src="/IconsCards/location.png" alt="localização" />{" "}
-                    {vagaSelecionada.localizacao}
+                    <img src="/IconsCards/location.png" alt="localização" /> {vagaSelecionada.localizacao}
                   </p>
                   <p>
-                    <img src="/IconsCards/clock-4.png" alt="relógio" />{" "}
-                    {vagaSelecionada.horario}
+                    <img src="/IconsCards/clock.png" alt="relógio" /> {vagaSelecionada.horario}
                   </p>
                   <p>
-                    <img src="/IconsCards/dollar-circle.png" alt="dólar" />{" "}
-                    {vagaSelecionada.salario}
+                    <img src="/IconsCards/dollar.png" alt="dólar" /> {vagaSelecionada.salario}
                   </p>
-
-                  {/* Area de atividades que deverao ser exercidas */}
                   <div className="mb-3">
-                    <label className="form-label">
-                      <strong>Atividades</strong>
-                    </label>
+                    <strong>Atividades</strong>
                     <ul>
-                      {vagaSelecionada.atividades?.map((atividade, index) => (
-                        <li key={index}>{atividade}</li>
+                      {vagaSelecionada.atividades?.map((a, i) => (
+                        <li key={i}>{a}</li>
                       ))}
                     </ul>
                   </div>
-
-                  {/* Area de requisitos para a vaga */}
                   <div className="mb-2">
-                    <label className="form-label">
-                      <strong>Requisitos</strong>
-                    </label>
+                    <strong>Requisitos</strong>
                     <ul>
-                      {vagaSelecionada.requisitos?.map((requisito, index) => (
-                        <li key={index}>{requisito}</li>
+                      {vagaSelecionada.requisitos?.map((r, i) => (
+                        <li key={i}>{r}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
-
                 <div className="BotaoModal">
-                  <button
-                    type="button"
-                    className="btn btn"
-                    style={{
-                      borderColor: "#148a9d",
-                      width: "20rem",
-                      border: "2px solid #148a9d",
-                      color: "#000",
-                    }}
-                  >
-                    <Link
-                      href="/"
-                      style={{ textDecoration: "none", color: "#000" }}
+                  <Link href={`/alunos?vagaId=${vagaSelecionada.id}`} passHref>
+                    <button
+                      type="button"
+                      className="btn btn"
+                      style={{
+                        borderColor: '#148a9d',
+                        width: '20rem',
+                        border: '2px solid #148a9d',
+                        color: '#000',
+                      }}
                     >
                       Tenho Interesse
-                    </Link>
-                  </button>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -216,24 +197,13 @@ export default function CardVagas({ vagas }) {
         )}
       </AnimatePresence>
 
-      {/* Botões Ver Mais e Ver Menos */}
+      {/* Botão "Carregar mais" */}
       <div className="text-center mt-1 BotaoVerMais">
         {visibleCount < vagas.length && (
-          <button
-            className="btn btn"
-            onClick={() => {
-              setTimeout(() => handleToggle("more"), 1000); // 1000 ms = 1 segundo
-            }}
-          >
+          <button className="btn btn" onClick={() => handleToggle('more')}>
             Carregar mais
           </button>
         )}
-
-        {/* {visibleCount > 4 && (
-          <button className="btn btn BotaoVerMenos ml-8" onClick={() => handleToggle("less")}>
-            Ver Menos
-          </button>
-        )} */}
       </div>
     </section>
   );

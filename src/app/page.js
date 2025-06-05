@@ -23,11 +23,12 @@ export default function Home() {
     <>
       <EstrelasCaindo />
 
-      <Header />
+      <Header/>
       
       <FacaSeuFurturo/>
       {/* <VitrineDeVagas/> */}
 {/* <CarroselPrincipal /> */}
+
       <VagasSection />
       <CardInformacoes />
       <FaleConosco />

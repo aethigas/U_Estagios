@@ -34,7 +34,7 @@ export default function FaleConosco() {
     console.log("Dados do formulário:", formData);
   };
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-  const duration = isMobile ? 2 : 2;  // mais tempo no mobile, 1.7 para desktop
+  const duration = isMobile ? 2 : 1.5;  // mais tempo no mobile, 1.7 para desktop
   // const decolar = isMobile ? 1.5 : 2;
 
 
@@ -80,7 +80,7 @@ export default function FaleConosco() {
           initial={{ x: 300, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           viewport={{ once: false, amount: 0.1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 1.3, ease: "easeOut" }}
         >
           <img src="/astronautas/AstronautaDuvidas.png" alt="localização" />
         </motion.div>
@@ -91,7 +91,7 @@ export default function FaleConosco() {
          initial={{ x: -300, opacity: 0 }}
          whileInView={{ x: 0, opacity: 1 }}
          viewport={{ once: false, amount: 0.1 }}
-         transition={{ duration: 1.7, ease: "easeOut" }}
+         transition={{ duration: 1, ease: "easeOut" }}
        >
         
             <h1>Fale Conosco</h1>
