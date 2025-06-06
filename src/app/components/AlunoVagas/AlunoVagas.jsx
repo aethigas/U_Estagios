@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { getCookie } from "cookies-next";
 import CardVagas from "../Cards/cardVagas";
 import "./AlunoVagas.css";
 
@@ -24,7 +25,6 @@ export default function AlunoVagas() {
         const res = await fetch("http://localhost:3001/api/vagas");
         const data = await res.json();
 
-        // Se atividades e requisitos vierem como strings separadas por vírgula
         const vagasFormatadas = data.map((vaga) => ({
           ...vaga,
           atividades: vaga.atividades?.split(",") || [],
@@ -40,7 +40,6 @@ export default function AlunoVagas() {
     fetchVagas();
   }, []);
 
-  // Busca vaga e relacionadas sempre que vagaId ou vagas mudarem
   useEffect(() => {
     if (vagaId && vagas.length > 0) {
       const vagaSelecionada = vagas.find((v) => v.id.toString() === vagaId);
@@ -53,10 +52,9 @@ export default function AlunoVagas() {
     }
   }, [vagaId, vagas]);
 
-  // Busca dados do aluno logado via token
   useEffect(() => {
     async function fetchAluno() {
-      const token = localStorage.getItem("token");
+      const token = getCookie("authorization");
       if (!token) {
         setMensagem("Usuário não autenticado. Faça login.");
         return;
@@ -85,15 +83,17 @@ export default function AlunoVagas() {
     e.preventDefault();
     setMensagem("");
 
-    const token = localStorage.getItem("token");
+    const token = getCookie("authorization");
     if (!token) {
       setMensagem("Você precisa estar logado para se inscrever.");
       return;
     }
+
     if (!telefone) {
       setMensagem("Por favor, preencha o telefone.");
       return;
     }
+
     if (!curriculo) {
       setMensagem("Por favor, envie seu currículo.");
       return;
@@ -118,54 +118,51 @@ export default function AlunoVagas() {
       setMensagem("");
       setTelefone("");
       setCurriculo(null);
-      setShowModal(true); // abrir modal sucesso
+      setShowModal(true);
     } catch {
       setMensagem("Erro ao enviar inscrição. Tente novamente.");
     }
   }
 
-  // Fecha modal ao clicar fora ou nos botões
   function closeModal() {
     setShowModal(false);
   }
 
   return (
     <div className="Aluno">
-    <div className="container mt-4 mb-5">
-      <h1 className="text-center">Vaga Selecionada</h1>
-      
-      <div className="row justify-content-start">
-        <div className="card col-md-6 p-4 mb-4 d-flex AlunoCard">
-          <h4>{vaga.titulo}</h4>
-          <p>{vaga.descricao}</p>
-          <p>
-            <strong>Área:</strong> {vaga.area}
-          </p>
-          <p>
-            <strong>Localização:</strong> {vaga.localizacao}
-          </p>
-          <p>
-            <strong>Horário:</strong> {vaga.horario}
-          </p>
-          <p>
-            <strong>Salário:</strong> {vaga.salario}
-          </p>
-          <h5>Atividades:</h5>
-          <ul>
-            {vaga.atividades?.map((a, i) => (
-              <li key={i}>{a}</li>
-            ))}
-          </ul>
-          <h5>Requisitos:</h5>
-          <ul>
-            {vaga.requisitos?.map((r, i) => (
-              <li key={i}>{r}</li>
-            ))}
-          </ul>
+      <div className="container mt-4 mb-5">
+        <h1 className="text-center">Vaga Selecionada</h1>
+
+        <div className="row justify-content-start">
+          <div className="card col-md-6 p-4 mb-4 d-flex AlunoCard">
+            <h4>{vaga.titulo}</h4>
+            <p>{vaga.descricao}</p>
+            <p>
+              <strong>Área:</strong> {vaga.area}
+            </p>
+            <p>
+              <strong>Localização:</strong> {vaga.localizacao}
+            </p>
+            <p>
+              <strong>Horário:</strong> {vaga.horario}
+            </p>
+            <p>
+              <strong>Salário:</strong> {vaga.salario}
+            </p>
+            <h5>Atividades:</h5>
+            <ul>
+              {vaga.atividades?.map((a, i) => (
+                <li key={i}>{a}</li>
+              ))}
+            </ul>
+            <h5>Requisitos:</h5>
+            <ul>
+              {vaga.requisitos?.map((r, i) => (
+                <li key={i}>{r}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-     
-  </div>
-  
 
         {aluno ? (
           <div className="Formulario card p-3 mb-4">
@@ -215,7 +212,9 @@ export default function AlunoVagas() {
         )}
 
         {relacionadas.length === 0 ? (
-          <h1 className="mt-5">Desculpe! Não temos vagas relacionadas no momento</h1>
+          <h1 className="mt-5">
+            Desculpe! Não temos vagas relacionadas no momento
+          </h1>
         ) : (
           <>
             <h1 className="mt-5">Conheça algumas vagas relacionadas</h1>
@@ -231,12 +230,12 @@ export default function AlunoVagas() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="modalLabel"
-            onClick={closeModal} // fecha ao clicar fora
+            onClick={closeModal}
           >
             <div
               className="modal-dialog"
               role="document"
-              onClick={(e) => e.stopPropagation()} // impede fechar ao clicar dentro
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="modal-content">
                 <div className="modal-header">

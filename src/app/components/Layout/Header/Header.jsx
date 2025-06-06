@@ -28,14 +28,14 @@ export default function Header() {
        
           <ul className={`menu ${menuOpen ? "open" : ""}`}>
         
-            <li><a href="/page">Home</a></li>
+            <li><a href=".">Home</a></li>
             <li><a href="#Vagas">Vitrine de Vagas</a></li>
 
             <li><a href="#">Sobre nós</a></li>
           </ul>
 
           <div className={`auth-buttons ${menuOpen ? "open" : ""}`}>
-            <Link href="/Empresa.jsx" className="login">Login</Link>
+            <Link href="/rotas/login" className="login">Login</Link>
             <a href="#" className="cadastre">Cadastre-se</a>
           </div>
         </nav>
