@@ -35,8 +35,8 @@ export default function Header() {
           </ul>
 
           <div className={`auth-buttons ${menuOpen ? "open" : ""}`}>
-            <Link href="/rotas/login" className="login">Login</Link>
-            <a href="#" className="cadastre">Cadastre-se</a>
+            <Link href="/login" className="login">Login</Link>
+            <a href="/cadastro" className="cadastre">Cadastre-se</a>
           </div>
         </nav>
       </header>

@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 import "./Empresa.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const gerarId = () => Date.now().toString() + Math.floor(Math.random() * 1000);
-
 export default function EmpresaVagas() {
   const [vagas, setVagas] = useState([]);
   const [form, setForm] = useState({
@@ -21,13 +19,13 @@ export default function EmpresaVagas() {
   const [inscritos, setInscritos] = useState({});
   const [verInscritosId, setVerInscritosId] = useState(null);
   const [vagaParaExcluir, setVagaParaExcluir] = useState(null);
+
   useEffect(() => {
     async function fetchVagas() {
       try {
         const res = await fetch("http://localhost:3001/api/vagas");
         const data = await res.json();
 
-        // Se atividades e requisitos vierem como strings separadas por vírgula
         const vagasFormatadas = data.map((vaga) => ({
           ...vaga,
           atividades: vaga.atividades?.split(",") || [],
@@ -42,39 +40,70 @@ export default function EmpresaVagas() {
 
     fetchVagas();
   }, []);
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const adicionarOuEditarVaga = () => {
-    if (editId) {
-      setVagas((v) =>
-        v.map((vaga) =>
-          vaga.id === editId ? { ...vaga, ...form, id: editId } : vaga
-        )
-      );
-      setEditId(null);
-    } else {
-      setVagas([...vagas, { ...form, id: gerarId() }]);
-    }
+  const adicionarOuEditarVaga = async () => {
+    try {
+      const metodo = editId ? "PUT" : "POST";
+      const url = editId
+        ? `http://localhost:3001/api/vagas/${editId}`
+        : "http://localhost:3001/api/vagas";
 
-    setForm({
-      titulo: "",
-      descricao: "",
-      area: "",
-      localizacao: "",
-      estado: "",
-      horario: "",
-      salario: "",
-    });
+      const resposta = await fetch(url, {
+        method: metodo,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!resposta.ok) throw new Error("Erro ao salvar vaga");
+
+      const vagaSalva = await resposta.json();
+
+      if (editId) {
+        setVagas((v) =>
+          v.map((vaga) => (vaga.id === editId ? vagaSalva : vaga))
+        );
+        setEditId(null);
+      } else {
+        setVagas([...vagas, vagaSalva]);
+      }
+
+      setForm({
+        titulo: "",
+        descricao: "",
+        area: "",
+        localizacao: "",
+        estado: "",
+        horario: "",
+        salario: "",
+      });
+    } catch (error) {
+      console.error("Erro ao salvar vaga:", error);
+    }
   };
 
-  const confirmarExcluirVaga = () => {
-    setVagas(vagas.filter((vaga) => vaga.id !== vagaParaExcluir));
-    const updatedInscritos = { ...inscritos };
-    delete updatedInscritos[vagaParaExcluir];
-    setInscritos(updatedInscritos);
-    setVagaParaExcluir(null);
+  const confirmarExcluirVaga = async () => {
+    try {
+      const resposta = await fetch(`http://localhost:3001/api/vagas/${vagaParaExcluir}`, {
+        method: "DELETE",
+      });
+
+      if (!resposta.ok) throw new Error("Erro ao excluir vaga");
+
+      setVagas(vagas.filter((vaga) => vaga.id !== vagaParaExcluir));
+
+      const updatedInscritos = { ...inscritos };
+      delete updatedInscritos[vagaParaExcluir];
+      setInscritos(updatedInscritos);
+      setVagaParaExcluir(null);
+    } catch (error) {
+      console.error("Erro ao excluir vaga:", error);
+    }
   };
 
   const editarVaga = (vaga) => {
@@ -90,12 +119,13 @@ export default function EmpresaVagas() {
 
     if (!inscritos[vagaId]) {
       try {
-        const resposta = await fetch(`/api/vagas/${vagaId}/inscritos`);
+        const resposta = await fetch(`http://localhost:3001/api/vagas/${vagaId}/inscritos`);
         if (!resposta.ok) throw new Error("Erro ao buscar inscritos");
 
         const data = await resposta.json();
         setInscritos({ ...inscritos, [vagaId]: data });
       } catch (e) {
+        console.error("Erro ao buscar inscritos:", e);
         setInscritos({
           ...inscritos,
           [vagaId]: [
@@ -121,8 +151,7 @@ export default function EmpresaVagas() {
     <div className="empresa-vagas container py-5">
       <h1 className="mb-4">Gerenciar vagas</h1>
 
-      {/* Formulário */}
-      <div className="row"> 
+      <div className="row">
         <div className="col-md-6 AstronautaEditar">
           <img src="/Astronautas/AstronautaEditar.png" alt="editar" />
         </div>
@@ -153,11 +182,8 @@ export default function EmpresaVagas() {
             </div>
           </form>
         </div>
-
-       
       </div>
 
-      {/* Listagem de Vagas */}
       <div className="row">
         <h1>Vagas ativas</h1>
         {vagas.map((vaga) => (
@@ -170,8 +196,7 @@ export default function EmpresaVagas() {
                   <strong>Área:</strong> {vaga.area}
                 </li>
                 <li>
-                  <strong>Localização:</strong> {vaga.localizacao} -{" "}
-                  {vaga.estado}
+                  <strong>Localização:</strong> {vaga.localizacao} - {vaga.estado}
                 </li>
                 <li>
                   <strong>Horário:</strong> {vaga.horario}
@@ -209,8 +234,7 @@ export default function EmpresaVagas() {
                     <ul>
                       {inscritos[vaga.id].map((aluno, index) => (
                         <li key={index}>
-                          <strong>{aluno.nome}</strong> - {aluno.email} -{" "}
-                          {aluno.telefone}
+                          <strong>{aluno.nome}</strong> - {aluno.email} - {aluno.telefone}
                         </li>
                       ))}
                     </ul>
@@ -224,7 +248,7 @@ export default function EmpresaVagas() {
         ))}
       </div>
 
-      {/* Modal excluir*/}
+      {/* Modal Excluir */}
       {vagaParaExcluir && (
         <div
           className="modal fade show"
@@ -232,12 +256,12 @@ export default function EmpresaVagas() {
           tabIndex="-1"
           role="dialog"
           aria-modal="true"
-          onClick={() => setVagaParaExcluir(null)} // fecha ao clicar no fundo
+          onClick={() => setVagaParaExcluir(null)}
         >
           <div
             className="modal-dialog"
             role="document"
-            onClick={(e) => e.stopPropagation()} // impede fechar ao clicar dentro do modal
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-content">
               <div className="modal-header">
@@ -250,10 +274,7 @@ export default function EmpresaVagas() {
                 ></button>
               </div>
               <div className="modal-body">
-                <p>
-                  Tem certeza que deseja excluir esta vaga? Essa ação não poderá
-                  ser desfeita.
-                </p>
+                <p>Essa ação não poderá ser desfeita.</p>
               </div>
               <div className="modal-footer">
                 <button

@@ -42,8 +42,8 @@
   flex-direction: column;
   justify-content: space-between;
   transition: transform 0.3s;
-  background-color:#0c1c2b;
-
+  background-color:#fff;
+/* #0c1c2b */
 }
 
 .custom-card:hover {

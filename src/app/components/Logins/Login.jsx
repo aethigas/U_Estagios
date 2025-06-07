@@ -2,9 +2,10 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { setCookie } from 'cookies-next';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import jwtDecode from 'jwt-decode';
+import { loginUsuario } from '@/lib/api'; // ← IMPORTAÇÃO DA FUNÇÃO
 import './Login.css';
 
 const tiposUsuario = [
@@ -23,6 +24,7 @@ export default function Login() {
   const [dropdownAberto, setDropdownAberto] = useState(false);
   const dropdownRef = useRef(null);
   const router = useRouter();
+  const searchParams = useSearchParams();
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -54,29 +56,22 @@ export default function Login() {
 
     setError('');
     try {
-      const response = await fetch('http://localhost:3001/api/user/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: form.email,
-          senha: form.password,
-          tipo_usuario: form.tipo_usuario,
-        }),
+      const token = await loginUsuario({
+        email: form.email,
+        senha: form.password,
+        tipo_usuario: form.tipo_usuario,
       });
 
-      const data = await response.json();
+      setCookie('authorization', token);
+      const decoded = jwtDecode(token);
+      setCookie('tipo', decoded.tipo);
 
-      if (response.status !== 200 || typeof data !== 'string') {
-        throw new Error(typeof data === 'string' ? data : data.error || 'Erro desconhecido');
-      }
-
-      setCookie('authorization', data);
-      const decoded = jwtDecode(data);
+      const vagaId = searchParams.get('vagaId');
 
       if (decoded.tipo === 'empresa') {
         router.push('/empresa/dashboard');
-      } else {
-        router.push('/aluno/perfil');
+      } else if (decoded.tipo === 'aluno') {
+        router.push(vagaId ? `/vaga?vagaId=${vagaId}` : '/vaga');
       }
     } catch (err) {
       setError(err.message || 'Erro ao fazer login');
@@ -84,8 +79,8 @@ export default function Login() {
   };
 
   return (
-    <div className="container d-flex justify-content-center align-items-center ">
-      <div className="row ">
+    <div className="container d-flex justify-content-center align-items-center">
+      <div className="row">
         <div className="col-12 col-md-4 mx-auto">
           <div className="login-container text-center p-4">
             <h1 className="login-title mb-4">Login</h1>
@@ -149,13 +144,13 @@ export default function Login() {
               {error && <p className="login-error text-danger fw-bold">{error}</p>}
 
               <div className="login-button-container">
-                <button type="submit" className="login-button btn btn-primary w-100 mt-3">
+                <button type="submit" className="login-button btn btn w-100 mt-3">
                   Entrar
                 </button>
               </div>
 
-              <p className="login-link mt-3">
-                <Link href="/rotas/cadastro">Não possui uma conta? Cadastre-se</Link>
+              <p className="login-link mt-3 color-white">
+                <Link href="/cadastro">Não possui uma conta? Cadastre-se</Link>
               </p>
             </form>
           </div>

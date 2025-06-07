@@ -1,10 +1,9 @@
-/* Container centralizado com fundo */
-.login-container {
+.loginContainer {
   max-width: 500px;
   width: 100%;
   margin: auto;
   padding: 2rem;
-  background-color: trsnparent;
+  background-color: transparent;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -13,31 +12,19 @@
   justify-content: center;
 }
 
-/* Para ocupar toda a tela com alinhamento central */
-.container {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-  padding: 1rem;
-}
-.dropdown-toggle{
-    color: #000;
-}
-.login-title {
+.loginTitle {
   font-size: 2.5rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 1.5rem;
 }
 
-.login-form {
+.loginForm {
   width: 100%;
 }
 
-.login-input,
-.dropdown-toggle {
+.loginInput,
+.dropdownToggle {
   width: 100%;
   margin-top: 1rem;
   border: 1px solid #ccc;
@@ -50,8 +37,8 @@
   box-sizing: border-box;
 }
 
-.login-input:focus,
-.dropdown-toggle:focus {
+.loginInput:focus,
+.dropdownToggle:focus {
   border-color: black;
   outline: none;
   box-shadow: 0 0 0 2px rgba(20, 138, 157, 0.2);
@@ -62,19 +49,20 @@
   margin-top: 1rem;
 }
 
-.dropdown-toggle {
+.dropdownToggle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
   user-select: none;
+  color: #000;
 }
 
-.dropdown-arrow {
+.dropdownArrow {
   margin-left: 0.5rem;
 }
 
-.dropdown-menu {
+.dropdownMenu {
   position: absolute;
   width: 100%;
   background-color: #fff;
@@ -87,7 +75,7 @@
   padding: 0;
 }
 
-.dropdown-option {
+.dropdownOption {
   padding: 10px;
   cursor: pointer;
   background-color: #fff;
@@ -95,27 +83,27 @@
   transition: background-color 0.2s ease;
 }
 
-.dropdown-option:hover {
+.dropdownOption:hover {
   background-color: #17a2b8;
   color: #fff;
 }
 
-.dropdown-option.active {
-  background-color: #148a9d;
+.active {
+  background-color: transparent;
   color: #fff;
 }
 
-.login-error {
+.loginError {
   color: #ff3333;
   margin-top: 1rem;
   font-weight: 500;
 }
 
-.login-button-container {
+.loginButtonContainer {
   margin-top: 2rem;
 }
 
-.login-button {
+.loginButton {
   background-color: #148a9d;
   color: #fff;
   width: 100%;
@@ -126,21 +114,50 @@
   transition: background-color 0.3s ease;
 }
 
-.login-button:hover {
+.loginButton:hover {
   background-color: #17a2b8;
 }
 
-.login-link {
+.loginLink {
   margin-top: 1.5rem;
+  color: white;
 }
 
-/* Responsividade */
+/* RESPONSIVIDADE */
 @media (max-width: 576px) {
-  .login-title {
-    font-size: 1.8rem;
+  .loginContainer {
+    padding: 1.5rem;
   }
 
-  .login-container {
-    padding: 1.5rem;
+  .loginTitle {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .loginContainer {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .loginInput,
+  .dropdownToggle {
+    font-size: 14px;
+    height: 3.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .loginTitle {
+    font-size: 1.5rem;
+  }
+
+  .loginButton {
+    height: 2.8rem;
+    font-size: 0.9rem;
+  }
+
+  .loginContainer {
+    padding: 1rem;
   }
 }
