@@ -18,7 +18,7 @@ export default function VagasSection() {
   useEffect(() => {
     async function fetchVagas() {
       try {
-        const res = await fetch("http://localhost:3001/api/vagas");
+        const res = await fetch("http://localhost:3001/vagas");
         const data = await res.json();
 
         // Se atividades e requisitos vierem como strings separadas por vírgula
