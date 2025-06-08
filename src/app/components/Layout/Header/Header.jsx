@@ -16,7 +16,6 @@ export default function Header() {
       try {
         const decoded = jwtDecode(token)
 
-        // opcional: fazer um fetch na API para garantir que o token ainda é válido
         fetch('http://localhost:3001/api/user/validate', {
           method: 'GET',
           headers: {
@@ -41,7 +40,7 @@ export default function Header() {
   const handleLogout = () => {
     deleteCookie('authorization')
     setUser(null)
-    window.location.href = '/' // ou use router.push('/') se estiver usando useRouter
+    window.location.href = '/'
   }
 
   return (
@@ -78,11 +77,16 @@ export default function Header() {
           ) : (
             <>
               {user.tipo === 'empresa' ? (
-                <Link href="http://empresa/dashboard" className="login">Painel da Empresa</Link>
+                <Link href="/empresa/dashboard" className="login">Painel da Empresa</Link>
               ) : (
-                <Link href="http://localhost:3001/aluno/perfil" className="login">Perfil do Aluno</Link>
+                <>
+                  <span className="user-info">
+                    {user.nome} ({user.email})
+                  </span>
+                  <Link href="/aluno/perfil" className="login">Perfil</Link>
+                </>
               )}
-              <button className="http://localhost:3000" onClick={handleLogout}>Sair</button>
+              <button onClick={handleLogout} className="logout-button">Sair</button>
             </>
           )}
         </div>

@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import "./FiltroVagas.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const tiposDeVaga = [
+const tipoDevaga = [
   { id: "1", nome: "Todas" },
   { id: "2", nome: "Aprendiz" },
   { id: "3", nome: "Estágio" },
@@ -189,7 +189,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
               <div className="col-12 mb-3">
                 {renderDropdown(
                   "Tipo de Vaga",
-                  tiposDeVaga,
+                  tipoDevaga,
                   filtrosLocais.tipoDeVaga,
                   (v) => setFiltroLocal("tipoDeVaga", v),
                   dropdownAberto === "tipo",
@@ -261,7 +261,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
             <div className="col-md-5 col-12">
               {renderDropdown(
                 "Tipo de Vaga",
-                tiposDeVaga,
+                tipoDevaga,
                 filtrosLocais.tipoDeVaga,
                 (v) => setFiltroLocal("tipoDeVaga", v),
                 dropdownAberto === "tipo",

@@ -2,20 +2,23 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { getCookie } from 'cookies-next';
+import { jwtDecode } from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CardVagas.css';
 
 export default function CardVagas({
   vagas = [],
-
   exibirModal = true,
-  botaoPersonalizado, // opcional: botão externo
-  limiteInicial = 6, // quantos cards exibir inicialmente
+  botaoPersonalizado,
+  limiteInicial = 6,
 }) {
   const [visibleCount, setVisibleCount] = useState(limiteInicial);
   const [modalVisible, setModalVisible] = useState(false);
   const [vagaSelecionada, setVagaSelecionada] = useState(null);
+
+  const router = useRouter();
 
   const handleToggle = (action) => {
     if (action === 'more' && visibleCount < vagas.length) {
@@ -34,6 +37,32 @@ export default function CardVagas({
   const fecharModal = () => {
     setModalVisible(false);
     setVagaSelecionada(null);
+  };
+
+  const handleTenhoInteresse = () => {
+    if (!vagaSelecionada || !vagaSelecionada.id) {
+      console.warn('Vaga não selecionada ou ID ausente.');
+      return;
+    }
+
+    const token = getCookie('authorization');
+
+    if (!token) {
+      router.push(`/login?vagaId=${vagaSelecionada.id}`);
+      return;
+    }
+
+    try {
+      const user = jwtDecode(token);
+      if (user.tipo === 'aluno') {
+        router.push(`/aluno/perfil?vagaId=${vagaSelecionada.id}`);
+      } else {
+        router.push(`/login?vagaId=${vagaSelecionada.id}`);
+      }
+    } catch (err) {
+      console.error('Erro ao decodificar token:', err);
+      router.push(`/login?vagaId=${vagaSelecionada.id}`);
+    }
   };
 
   return (
@@ -60,11 +89,9 @@ export default function CardVagas({
                   <div className="leg leg-right"></div>
                   <div className="schoolbag"></div>
                 </div>
-                <h1> Desculpe! Não encontramos vagas no momento.</h1>
+                <h1>Desculpe! Não encontramos vagas no momento.</h1>
               </div>
-            ) : (
-             null
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -88,7 +115,7 @@ export default function CardVagas({
                         <img src="/IconsCards/star.png" alt="estrela" /> {vaga.area}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/location.png" alt="localização" /> {vaga.localizacao} - {vaga.estado}
+                        <img src="/IconsCards/location.png" alt="localização" /> {vaga.endereco} - {vaga.estado}
                       </div>
                       <div className="card-info-item">
                         <img src="/IconsCards/clock.png" alt="relógio" /> {vaga.horario}
@@ -120,7 +147,7 @@ export default function CardVagas({
         </div>
       </motion.div>
 
-      {/* Modal de detalhes */}
+      {/* Modal */}
       <AnimatePresence>
         {exibirModal && modalVisible && vagaSelecionada && (
           <motion.div
@@ -150,7 +177,7 @@ export default function CardVagas({
                     <img src="/IconsCards/star.png" alt="estrela" /> {vagaSelecionada.area}
                   </p>
                   <p>
-                    <img src="/IconsCards/location.png" alt="localização" /> {vagaSelecionada.localizacao}
+                    <img src="/IconsCards/location.png" alt="localização" /> {vagaSelecionada.endereco}
                   </p>
                   <p>
                     <img src="/IconsCards/clock.png" alt="relógio" /> {vagaSelecionada.horario}
@@ -176,20 +203,19 @@ export default function CardVagas({
                   </div>
                 </div>
                 <div className="BotaoModal">
-                  <Link href={`/alunos?vagaId=${vagaSelecionada.id}`} passHref>
-                    <button
-                      type="button"
-                      className="btn btn"
-                      style={{
-                        borderColor: '#148a9d',
-                        width: '20rem',
-                        border: '2px solid #148a9d',
-                        color: '#000',
-                      }}
-                    >
-                      Tenho Interesse
-                    </button>
-                  </Link>
+                  <button
+                    type="button"
+                    onClick={handleTenhoInteresse}
+                    className="btn btn"
+                    style={{
+                      borderColor: '#148a9d',
+                      width: '20rem',
+                      border: '2px solid #148a9d',
+                      color: '#000',
+                    }}
+                  >
+                    Tenho Interesse
+                  </button>
                 </div>
               </div>
             </motion.div>
@@ -197,7 +223,6 @@ export default function CardVagas({
         )}
       </AnimatePresence>
 
-      {/* Botão "Carregar mais" */}
       <div className="text-center mt-1 BotaoVerMais">
         {visibleCount < vagas.length && (
           <button className="btn btn" onClick={() => handleToggle('more')}>

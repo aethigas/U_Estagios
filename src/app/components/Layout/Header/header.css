@@ -1,5 +1,5 @@
 
-/* --------- HEADER E LOGO --------- */
+
 .main-header {
   background-color: rgba(0, 0, 0, 0.6);         /* Fundo mais escuro e mais opaco */
   backdrop-filter: blur(12px) brightness(1.2);  /* Blur mais forte + brilho leve */
@@ -51,6 +51,20 @@
     gap: 1rem;
   }
 }
+.user-info {
+  margin-right: 1rem;
+  color: white;
+  font-weight: bold;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 
 /* --------- MENU TOGGLE (MOBILE) --------- */
 .menu-toggle {
