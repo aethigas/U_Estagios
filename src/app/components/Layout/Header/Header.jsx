@@ -1,4 +1,5 @@
 'use client'
+
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { getCookie, deleteCookie } from 'cookies-next'
@@ -24,7 +25,10 @@ export default function Header() {
         })
           .then((res) => {
             if (!res.ok) throw new Error('Token inválido')
-            setUser(decoded)
+            return res.json()
+          })
+          .then((data) => {
+            setUser(data)
           })
           .catch(() => {
             deleteCookie('authorization')
@@ -76,16 +80,16 @@ export default function Header() {
             </>
           ) : (
             <>
+              <span className="user-info">
+                {user.nome || user.email}
+              </span>
+
               {user.tipo === 'empresa' ? (
                 <Link href="/empresa/dashboard" className="login">Painel da Empresa</Link>
               ) : (
-                <>
-                  <span className="user-info">
-                    {user.nome} ({user.email})
-                  </span>
-                  <Link href="/aluno/perfil" className="login">Perfil</Link>
-                </>
+                <Link href="/aluno/perfil" className="login">Perfil</Link>
               )}
+
               <button onClick={handleLogout} className="logout-button">Sair</button>
             </>
           )}

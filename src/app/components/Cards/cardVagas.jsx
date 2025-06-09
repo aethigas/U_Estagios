@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation'; 
+import { useRouter } from 'next/navigation';
 
 import { getCookie } from 'cookies-next';
 import { jwtDecode } from 'jwt-decode';
@@ -44,23 +44,23 @@ export default function CardVagas({
     if (!vagaSelecionada?.id) return;
 
     const token = getCookie('authorization');
-    const redirectPath = `/login?vagaId=${vagaSelecionada.id}`;
+    const redirectPath = `http://localhost:3001/login?vagaId=${vagaSelecionada.id}`;
 
     if (!token) {
-      router.push(redirectPath);
+      window.location.href = redirectPath;
       return;
     }
 
     try {
       const user = jwtDecode(token);
       if (user.tipo === 'aluno') {
-        router.push(`/aluno/perfil?vagaId=${vagaSelecionada.id}`);
+        window.location.href = `http://localhost:3001/aluno/perfil?vagaId=${vagaSelecionada.id}`;
       } else {
-        router.push(redirectPath);
+        window.location.href = redirectPath;
       }
     } catch (err) {
       console.error('Erro ao decodificar token:', err);
-      router.push(redirectPath);
+      window.location.href = redirectPath;
     }
   };
 
@@ -109,7 +109,13 @@ export default function CardVagas({
                   <div className="card-body">
                     <h5 className="card-title">{vaga.titulo}</h5>
                     <h6 className="decription">{vaga.descricao}</h6>
+                     <h6 className="empresa-nome ">
+                      <img src="/IconsCards/empresa.png" alt="Empresa" style={{ width: '16px', marginRight: '5px' }} />
+                      {vaga.nome_empresa}
+                    </h6>
+
                     <div className="card-text TextoCards">
+                     
                       <div className="card-info-item">
                         <img src="/IconsCards/star.png" alt="Área" /> {vaga.area}
                       </div>
@@ -172,6 +178,11 @@ export default function CardVagas({
                 <div className="modal-body ConteudoModal">
                   <h5 className="modal-title">{vagaSelecionada.titulo}</h5>
                   <h6 className="decription">{vagaSelecionada.descricao}</h6>
+                  <h6 className="empresa-nome">
+                    <img src="/IconsCards/empresa.png" alt="Empresa" style={{ width: '16px', marginRight: '5px' }} />
+                    {vagaSelecionada.nome_empresa}
+                  </h6>
+
                   <p><img src="/IconsCards/star.png" alt="Área" /> {vagaSelecionada.area}</p>
                   <p><img src="/IconsCards/location.png" alt="Endereço" /> {vagaSelecionada.endereco}</p>
                   <p><img src="/IconsCards/clock.png" alt="Horário" /> {vagaSelecionada.horario}</p>

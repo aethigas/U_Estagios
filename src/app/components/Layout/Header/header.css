@@ -17,6 +17,27 @@
   margin: 1rem auto;
   display: block;
 }
+.user-info {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.logout-button {
+  background: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  transition: background 0.3s;
+}
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
 
 @media (min-width: 640px) {
   .logo {
