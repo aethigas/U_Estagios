@@ -5,44 +5,40 @@ import { motion } from "framer-motion";
 import "./FiltroVagas.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// Lista de tipos de vaga com IDs únicos
 const tipoDevaga = [
   { id: "1", nome: "Todas" },
   { id: "2", nome: "Aprendiz" },
   { id: "3", nome: "Estágio" },
+  { id: "5", nome: "CLT" },
 ];
 
-const areasProfissionais = [
+// Lista de áreas com IDs únicos (corrigido)
+const area = [
   { id: "1", nome: "Todas" },
   { id: "2", nome: "Tecnologia" },
-  { id: "3", nome: "Administração" },
-  { id: "4", nome: "Saúde" },
+  { id: "3", nome: "Enfermagem" },
+  { id: "4", nome: "Engenharia" },
+  { id: "5", nome: "Administração" },
 ];
 
 export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
-  const [filtrosLocais, setFiltrosLocais] = useState(filtros);
+  // Define filtros locais com fallback seguro
+  const [filtrosLocais, setFiltrosLocais] = useState(
+    filtros || { tipoDeVaga: "1", area: "1", cidade: "", estado: "" }
+  );
 
+  // Atualiza os filtros locais se os filtros externos mudarem
   useEffect(() => {
-    setFiltrosLocais(filtros);
+    setFiltrosLocais(filtros || { tipoDeVaga: "1", area: "1", cidade: "", estado: "" });
   }, [filtros]);
 
-  const aplicar = () => {
-  if (typeof onAplicarFiltros === "function") {
-    onAplicarFiltros(filtrosLocais);
-  } else {
-    console.warn("onAplicarFiltros não foi fornecido");
-  }
-
-  // Fechar o menu mobile após aplicar os filtros
-  setMenuOpen(false);
-};
-
- 
-
+  // Estado para controle do dropdown e menu mobile
   const [dropdownAberto, setDropdownAberto] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
-
   const wrapperRef = useRef(null);
 
+  // Fecha os dropdowns e menu ao clicar fora
   useEffect(() => {
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
@@ -54,15 +50,27 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Aplica filtros e fecha menu mobile
+  const aplicar = () => {
+    if (typeof onAplicarFiltros === "function") {
+      onAplicarFiltros(filtrosLocais);
+    } else {
+      console.warn("onAplicarFiltros não foi fornecido");
+    }
+    setMenuOpen(false);
+  };
+
+  // Alterna visibilidade do dropdown
   const abrirDropdown = (nome) => {
     setDropdownAberto(dropdownAberto === nome ? null : nome);
   };
 
+  // Atualiza um campo específico dos filtros locais
   const setFiltroLocal = (campo, valor) => {
     setFiltrosLocais((prev) => ({ ...prev, [campo]: valor }));
   };
-  
 
+  // Componente reutilizável de dropdown customizado
   const renderDropdown = (label, items, selected, onSelect, aberto, labelKey) => (
     <div className="mb-3" style={{ position: "relative" }}>
       <h6>{label}</h6>
@@ -119,10 +127,11 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
           right: menuOpen ? "0" : "auto",
           zIndex: menuOpen ? 1100 : "auto",
           width: "100%",
-          backgroundColor: menuOpen ? "transparent" : "transparent",
+          backgroundColor: "transparent",
         }}
       >
         <button
+          type="button"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir/Fechar filtros"
           style={{
@@ -200,9 +209,9 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
               <div className="col-12 mb-3">
                 {renderDropdown(
                   "Área profissional",
-                  areasProfissionais,
-                  filtrosLocais.areaProfissional,
-                  (v) => setFiltroLocal("areaProfissional", v),
+                  area,
+                  filtrosLocais.area,
+                  (v) => setFiltroLocal("area", v),
                   dropdownAberto === "area",
                   "area"
                 )}
@@ -233,14 +242,14 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
               <div className="col-12 text-end">
                 <div className="BotaoAplicar">
                   <button
-                  className="btn btn w-100 mt-custom"
-                  style={{ height: "3.5rem", color: "#fff" }}
-                  onClick={aplicar}
-                >
-                  Aplicar
-                </button>  
+                    type="button"
+                    className="btn btn w-100 mt-custom"
+                    style={{ height: "3.5rem", color: "#fff" }}
+                    onClick={aplicar}
+                  >
+                    Aplicar
+                  </button>
                 </div>
-              
               </div>
             </div>
           </div>
@@ -250,7 +259,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
       {/* Filtros desktop */}
       <div className="formVagas d-none d-md-block" ref={wrapperRef}>
         <div className="container py-4 text-center">
-          <h1> Filtre e encontre a melhor vaga para você</h1>
+          <h1>Filtre e encontre a melhor vaga para você</h1>
           <motion.div
             className="row mb-3 justify-content-center"
             initial={{ opacity: 0, y: -60 }}
@@ -272,9 +281,9 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
             <div className="col-md-5 col-12">
               {renderDropdown(
                 "Área profissional",
-                areasProfissionais,
-                filtrosLocais.areaProfissional,
-                (v) => setFiltroLocal("areaProfissional", v),
+                area,
+                filtrosLocais.area,
+                (v) => setFiltroLocal("area", v),
                 dropdownAberto === "area",
                 "area"
               )}
@@ -304,15 +313,15 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
 
             <div className="col-md-2 col-12 text-end">
               <div className="BotaoAplicar">
-                   <button
-                className="btn btn w-100 "
-                style={{ height: "3.5rem", color: "#fff" }}
-                onClick={aplicar}
-              >
-                Aplicar
-              </button>
+                <button
+                  type="button"
+                  className="btn btn w-100"
+                  style={{ height: "3.5rem", color: "#fff" }}
+                  onClick={aplicar}
+                >
+                  Aplicar
+                </button>
               </div>
-           
             </div>
           </motion.div>
         </div>

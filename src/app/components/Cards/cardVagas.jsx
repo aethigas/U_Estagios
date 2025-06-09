@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; 
+
 import { getCookie } from 'cookies-next';
 import { jwtDecode } from 'jwt-decode';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -40,15 +41,13 @@ export default function CardVagas({
   };
 
   const handleTenhoInteresse = () => {
-    if (!vagaSelecionada || !vagaSelecionada.id) {
-      console.warn('Vaga não selecionada ou ID ausente.');
-      return;
-    }
+    if (!vagaSelecionada?.id) return;
 
     const token = getCookie('authorization');
+    const redirectPath = `/login?vagaId=${vagaSelecionada.id}`;
 
     if (!token) {
-      router.push(`/login?vagaId=${vagaSelecionada.id}`);
+      router.push(redirectPath);
       return;
     }
 
@@ -57,11 +56,11 @@ export default function CardVagas({
       if (user.tipo === 'aluno') {
         router.push(`/aluno/perfil?vagaId=${vagaSelecionada.id}`);
       } else {
-        router.push(`/login?vagaId=${vagaSelecionada.id}`);
+        router.push(redirectPath);
       }
     } catch (err) {
       console.error('Erro ao decodificar token:', err);
-      router.push(`/login?vagaId=${vagaSelecionada.id}`);
+      router.push(redirectPath);
     }
   };
 
@@ -76,7 +75,7 @@ export default function CardVagas({
       >
         <div className="row">
           <div className="col-md-12 mt-4 mb-4 ConhecaVagas">
-            {vagas.length === 0 ? (
+            {vagas.length === 0 && (
               <div className="atronauta">
                 <div className="astronaut">
                   <div className="head"></div>
@@ -91,7 +90,7 @@ export default function CardVagas({
                 </div>
                 <h1>Desculpe! Não encontramos vagas no momento.</h1>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
 
@@ -112,16 +111,16 @@ export default function CardVagas({
                     <h6 className="decription">{vaga.descricao}</h6>
                     <div className="card-text TextoCards">
                       <div className="card-info-item">
-                        <img src="/IconsCards/star.png" alt="estrela" /> {vaga.area}
+                        <img src="/IconsCards/star.png" alt="Área" /> {vaga.area}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/location.png" alt="localização" /> {vaga.endereco} - {vaga.estado}
+                        <img src="/IconsCards/location.png" alt="Localização" /> {vaga.endereco} - {vaga.estado}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/clock.png" alt="relógio" /> {vaga.horario}
+                        <img src="/IconsCards/clock.png" alt="Horário" /> {vaga.horario}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/dollar.png" alt="dólar" /> {vaga.salario}
+                        <img src="/IconsCards/dollar.png" alt="Salário" /> {vaga.salario}
                       </div>
                     </div>
                     {botaoPersonalizado ? (
@@ -173,22 +172,14 @@ export default function CardVagas({
                 <div className="modal-body ConteudoModal">
                   <h5 className="modal-title">{vagaSelecionada.titulo}</h5>
                   <h6 className="decription">{vagaSelecionada.descricao}</h6>
-                  <p>
-                    <img src="/IconsCards/star.png" alt="estrela" /> {vagaSelecionada.area}
-                  </p>
-                  <p>
-                    <img src="/IconsCards/location.png" alt="localização" /> {vagaSelecionada.endereco}
-                  </p>
-                  <p>
-                    <img src="/IconsCards/clock.png" alt="relógio" /> {vagaSelecionada.horario}
-                  </p>
-                  <p>
-                    <img src="/IconsCards/dollar.png" alt="dólar" /> {vagaSelecionada.salario}
-                  </p>
+                  <p><img src="/IconsCards/star.png" alt="Área" /> {vagaSelecionada.area}</p>
+                  <p><img src="/IconsCards/location.png" alt="Endereço" /> {vagaSelecionada.endereco}</p>
+                  <p><img src="/IconsCards/clock.png" alt="Horário" /> {vagaSelecionada.horario}</p>
+                  <p><img src="/IconsCards/dollar.png" alt="Salário" /> {vagaSelecionada.salario}</p>
                   <div className="mb-3">
                     <strong>Atividades</strong>
                     <ul>
-                      {vagaSelecionada.atividades?.map((a, i) => (
+                      {(vagaSelecionada.atividades || []).map((a, i) => (
                         <li key={i}>{a}</li>
                       ))}
                     </ul>
@@ -196,7 +187,7 @@ export default function CardVagas({
                   <div className="mb-2">
                     <strong>Requisitos</strong>
                     <ul>
-                      {vagaSelecionada.requisitos?.map((r, i) => (
+                      {(vagaSelecionada.requisitos || []).map((r, i) => (
                         <li key={i}>{r}</li>
                       ))}
                     </ul>

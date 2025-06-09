@@ -16,7 +16,7 @@ export default function Header() {
       try {
         const decoded = jwtDecode(token)
 
-        fetch('http://localhost:3001/api/user/validate', {
+        fetch('http://localhost:3001/api/user/me', {
           method: 'GET',
           headers: {
             Authorization: `Bearer ${token}`,
@@ -40,7 +40,7 @@ export default function Header() {
   const handleLogout = () => {
     deleteCookie('authorization')
     setUser(null)
-    window.location.href = '/'
+    window.location.href = '/home'
   }
 
   return (
@@ -63,7 +63,7 @@ export default function Header() {
         <img src="/Astronautas/AstronautaLogo.png" alt="logo" className="logo" />
 
         <ul className={`menu ${menuOpen ? 'open' : ''}`}>
-          <li><a href=".">Home</a></li>
+          <li><a href="/home">Home</a></li>
           <li><a href="#Vagas">Vitrine de Vagas</a></li>
           <li><a href="#">Sobre nós</a></li>
         </ul>
