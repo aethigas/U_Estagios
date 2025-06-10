@@ -10,6 +10,8 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [user, setUser] = useState(null)
 
+ 
+
   useEffect(() => {
     const token = getCookie('authorization')
 
@@ -22,7 +24,10 @@ export default function Header() {
           headers: {
             Authorization: `Bearer ${token}`,
           },
+          credentials: 'include',
         })
+
+
           .then((res) => {
             if (!res.ok) throw new Error('Token inválido')
             return res.json()

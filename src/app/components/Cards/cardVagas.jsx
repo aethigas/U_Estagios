@@ -40,29 +40,34 @@ export default function CardVagas({
     setVagaSelecionada(null);
   };
 
-  const handleTenhoInteresse = () => {
-    if (!vagaSelecionada?.id) return;
+const handleTenhoInteresse = () => {
+  if (!vagaSelecionada?.id) return;
 
-    const token = getCookie('authorization');
-    const redirectPath = `http://localhost:3001/login?vagaId=${vagaSelecionada.id}`;
+  const token = getCookie('authorization');
+  const redirectToLogin = `http://localhost:3001/login?vagaId=${vagaSelecionada.id}`;
+  const redirectToPerfil = `http://localhost:3001/aluno/perfil?vagaId=${vagaSelecionada.id}`;
 
-    if (!token) {
-      window.location.href = redirectPath;
-      return;
+  if (!token) {
+    // Usuário não logado
+    window.location.href = redirectToLogin;
+    return;
+  }
+
+  try {
+    const user = jwtDecode(token);
+
+    if (user?.tipo === 'aluno') {
+      // Aluno autenticado
+      window.location.href = redirectToPerfil;
+    } else {
+      // Empresa ou tipo inválido
+      window.location.href = redirectToLogin;
     }
-
-    try {
-      const user = jwtDecode(token);
-      if (user.tipo === 'aluno') {
-        window.location.href = `http://localhost:3001/aluno/perfil?vagaId=${vagaSelecionada.id}`;
-      } else {
-        window.location.href = redirectPath;
-      }
-    } catch (err) {
-      console.error('Erro ao decodificar token:', err);
-      window.location.href = redirectPath;
-    }
-  };
+  } catch (err) {
+    console.error('Erro ao decodificar token:', err);
+    window.location.href = redirectToLogin;
+  }
+};
 
   return (
     <section className="background">
@@ -111,19 +116,19 @@ export default function CardVagas({
                     <h6 className="decription">{vaga.descricao}</h6>
                      <h6 className="empresa-nome ">
                       <img src="/IconsCards/empresa.png" alt="Empresa" style={{ width: '16px', marginRight: '5px' }} />
-                      {vaga.nome_empresa}
-                    </h6>
+                      <strong>{vaga.nome_empresa}</strong>
 
+                    </h6>
                     <div className="card-text TextoCards">
                      
                       <div className="card-info-item">
-                        <img src="/IconsCards/star.png" alt="Área" /> {vaga.area}
+                        <img src="/IconsCards/star.png" alt="Área" />  {vaga.area}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/location.png" alt="Localização" /> {vaga.endereco} - {vaga.estado}
+                        <img src="/IconsCards/location.png" alt="Localização" />  {vaga.endereco} - {vaga.estado}
                       </div>
                       <div className="card-info-item">
-                        <img src="/IconsCards/clock.png" alt="Horário" /> {vaga.horario}
+                        <img src="/IconsCards/clock.png" alt="Horário" />  {vaga.horario}
                       </div>
                       <div className="card-info-item">
                         <img src="/IconsCards/dollar.png" alt="Salário" /> {vaga.salario}
@@ -180,12 +185,12 @@ export default function CardVagas({
                   <h6 className="decription">{vagaSelecionada.descricao}</h6>
                   <h6 className="empresa-nome">
                     <img src="/IconsCards/empresa.png" alt="Empresa" style={{ width: '16px', marginRight: '5px' }} />
-                    {vagaSelecionada.nome_empresa}
+                    <strong>{vagaSelecionada.nome_empresa}</strong>
                   </h6>
 
-                  <p><img src="/IconsCards/star.png" alt="Área" /> {vagaSelecionada.area}</p>
+                  <p><img src="/IconsCards/star.png" alt="Área" />  {vagaSelecionada.area}</p>
                   <p><img src="/IconsCards/location.png" alt="Endereço" /> {vagaSelecionada.endereco}</p>
-                  <p><img src="/IconsCards/clock.png" alt="Horário" /> {vagaSelecionada.horario}</p>
+                  <p><img src="/IconsCards/clock.png" alt="Horário" />  {vagaSelecionada.horario}</p>
                   <p><img src="/IconsCards/dollar.png" alt="Salário" /> {vagaSelecionada.salario}</p>
                   <div className="mb-3">
                     <strong>Atividades</strong>
