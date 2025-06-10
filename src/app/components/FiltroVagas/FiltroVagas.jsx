@@ -257,7 +257,7 @@ export default function FiltroDeVagas({ filtros, onAplicarFiltros }) {
       )}
 
       {/* Filtros desktop */}
-      <div className="formVagas d-none d-md-block" ref={wrapperRef}>
+      <div className="formVagas d-none d-md-block bg-black" ref={wrapperRef}>
         <div className="container py-4 text-center">
           <h1>Filtre e encontre a melhor vaga para você</h1>
           <motion.div

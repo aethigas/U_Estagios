@@ -1,0 +1,20 @@
+
+.NossoObjetivo h1{
+    color: #fff;
+    margin-top: 5rem;
+    font-weight: 500;
+    font-size: 2.5rem;
+    display: flex;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+
+.NossoObjetivo p{
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 1rem;
+    display: block;
+    margin-right: 9rem;
+}

@@ -50,7 +50,7 @@ export default function CardInformacoes() {
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <img src="/CardInfoImgs//imgteste.jpg" className="CardImg" alt="Estudante" />
+                        <img src="/CardInfoImgs/estudante.jpeg" className="CardImg" alt="Estudante" />
                         <div className="CardTexto">
                             <h1>Estudante</h1>
                             <p>Vagas de estágio espalhadas por todo o Brasil.</p>

@@ -1,55 +1,57 @@
-
-
 .Futuro h1 {
-    font-size: 2.5rem;
-    font-weight: bold;
-    text-align: start !important;
-    color: #fff;
-    white-space: normal;}
-  
-    .AstronautaFuturo img{
-        width: 30rem;
-       
-        position: relative;
-      
-      }
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: start;
+  color: #fff;
+  white-space: normal;
+  margin: 0;
+  line-height: 1.2;
+  padding: 0 1rem;
+}
+
+.AstronautaFuturo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.AstronautaFuturo img {
+  width: 100%;
+  max-width: 30rem;
+  height: auto;
+  display: block;
+}
 
 /* Responsividade */
 @media (max-width: 992px) {
-  .Futuro h1{
-  
-    font-size: 2rem;
-    max-width: 100%;
+  .Futuro h1 {
+    font-size: clamp(1.8rem, 4vw, 2rem);
   }
-
-
 }
-
 
 @media (max-width: 768px) {
   .Futuro h1 {
-    font-size: 1.8rem;
+    font-size: clamp(1.6rem, 5vw, 1.8rem);
     text-align: center;
-    margin-right: 0;
-   
+    margin-bottom: 1.5rem;
   }
 
-  .Futuro h1 {
-    font-size: 2rem;
-    text-align: center;
-   
+  .AstronautaFuturo {
+    padding-top: 0;
   }
-      .AstronautaFuturo img{
-    width: 18rem;
-    margin-top: 1rem !important;}
-
-
+  
+  .AstronautaFuturo img {
+    max-width: 25rem;
+  }
 }
 
 @media (max-width: 576px) {
   .Futuro h1 {
-    font-size: 1.6rem;
+    font-size: clamp(1.4rem, 6vw, 1.6rem);
   }
-
+  
+  .AstronautaFuturo img {
+    max-width: 18rem;
+  }
 }
-

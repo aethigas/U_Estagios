@@ -45,8 +45,8 @@ export default function FaleConosco() {
         <div className="col-12 col-md-8 text-start mb-4">
           <motion.div
             initial={{ y: 0, opacity: 0 }}
-            animate={isInView ? { y: -400, opacity: 0 } : { y: 0, opacity: 1 }}
-            transition={{ duration: 2, ease: "easeInOut" }}
+            animate={isInView ? { y: -300, opacity: 0 } : { y: 0, opacity: 1 }}
+            transition={{ duration: 1.7, ease: "easeInOut" }}
             style={{
               position: "relative",
               zIndex: 10,
@@ -58,7 +58,7 @@ export default function FaleConosco() {
               animationData={animacaoFoguete}
               loop={false}
               autoplay={false}
-              style={{ height: 500 }}
+              style={{ height: 450 }}
             />
           </motion.div>
 

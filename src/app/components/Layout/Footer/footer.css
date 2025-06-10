@@ -16,19 +16,19 @@ footer {
   display: flex;
   width: 100%;
   align-items: center;
-  font-family: 'Cinzel', sans-serif;
  
 }
  
 .logo{
-    width: 10vw;      
+    width: 7vw;      
     flex-direction: column;
  
 }
  
-.teste{
+.texto{
   flex-direction: column;
   display: flex;
+  margin-top: 2rem;
   align-items: center;
   text-shadow: #000000;
 }

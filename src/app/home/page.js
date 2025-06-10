@@ -9,6 +9,7 @@ import FaleConosco from '../components/Forms/FaleConosco/FaleConosco.jsx'
 import CardInformacoes from '../components/Cards/cardInformacoes.jsx'
 import EstrelasCaindo from '../components/EstrelasFundo/EstrelasCaindo.jsx'
 import FacaSeuFurturo from '../components/FacaSeuFuturo/FacaSeufuturo.jsx'
+import Objetivo from '../components/Objetivo/NossoObjetivo.jsx'
 import './home.css'
 
 
@@ -27,12 +28,12 @@ export default function Home() {
       
       <FacaSeuFurturo/>
       {/* <VitrineDeVagas/> */}
-{/* <CarroselPrincipal /> */}
-
-      <VagasSection />
+     <Objetivo></Objetivo>
       <CardInformacoes />
+      <VagasSection />
+   {/* <CarroselPrincipal /> */}
       <FaleConosco />
-      {/* <Footer /> */}
+      <Footer />
     </>
   )
 }

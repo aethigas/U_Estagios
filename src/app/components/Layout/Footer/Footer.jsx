@@ -10,8 +10,8 @@ export default function Footer() {
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="footer"
     >
-       <img src='logo.png' className='logo' ></img>
-            <div  className='teste'>
+       <img src='/Astronautas/AstronautaLogo.png' className='logo' ></img>
+            <div  className='texto'>
             <p>&copy; 2025 | Todos os direitos reservados</p>
             <div className='icons'>
             <div>
