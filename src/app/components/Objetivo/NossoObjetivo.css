@@ -1,20 +1,46 @@
-
-.NossoObjetivo h1{
+.NossoObjetivo h1 {
     color: #fff;
     margin-top: 5rem;
     font-weight: 500;
     font-size: 2.5rem;
     display: flex;
-    margin-bottom: 3rem;
     justify-content: center;
-}
-
-.NossoObjetivo p{
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 1rem;
+  }
+  
+  .NossoObjetivo p {
     font-size: 1.5rem;
     color: #fff;
     font-weight: 400;
     text-align: center;
     margin-top: 1rem;
-    display: block;
-    margin-right: 9rem;
-}
+    margin: 1rem auto 0 auto;
+    max-width: 800px;
+    padding: 0 1rem;
+  }
+  
+  /* Responsividade para tablets e celulares */
+  @media (max-width: 768px) {
+    .NossoObjetivo h1 {
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
+  
+    .NossoObjetivo p {
+      font-size: 1.2rem;
+      margin-right: 0;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .NossoObjetivo h1 {
+      font-size: 1.6rem;
+    }
+  
+    .NossoObjetivo p {
+      font-size: 1rem;
+    }
+  }
+  
