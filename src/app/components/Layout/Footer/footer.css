@@ -9,6 +9,7 @@ footer {
 }
 
 footer {
+  margin-top: 10rem;
   color: rgb(255, 255, 255);
   background-image: url(/footer.jpg);
   justify-content: center;

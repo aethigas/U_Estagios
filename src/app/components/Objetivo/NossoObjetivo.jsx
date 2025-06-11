@@ -6,12 +6,17 @@ export default function Objetivo() {
     <>
       <div className="container ">
         <div className="row">
-            <div className="col-md-12  NossoObjetivo">
-                <h1>Qual o nosso objetivo?</h1>
-                <p>O principal objetivo da <strong>Universe Estágios</strong>é conectar os jovens que estão na procura do primeiro emprego a empresas que estão disponibilizando vagas  em todo lugar, 
-                trazendo para os estudantes um <strong>Univeso</strong>de possibilidades!</p>
-                <p>Aqui você tem a oportunidade de encontar a melhor vaga que se encaixa no seu perfil de aluno!</p>
-            </div>
+          <div className="col-md-12  NossoObjetivo">
+            <h1 className="display-5 fw-bold text-white mb-4">Qual é o nosso objetivo?</h1>
+            <p className="lead text-light">
+              O principal objetivo da <strong>Universe Estágios</strong>é conectar jovens em busca do primeiro emprego a empresas que oferecem oportunidades em diversas regiões,
+              abrindo para os estudantes um verdadeiro <strong>universo</strong>de possibilidades!
+            </p>
+            <p className="lead text-light">
+              Aqui, você tem a chance de encontrar a vaga ideal, aquela que mais combina com seu perfil e seus sonhos.
+            </p>
+
+          </div>
         </div>
       </div>
     </>

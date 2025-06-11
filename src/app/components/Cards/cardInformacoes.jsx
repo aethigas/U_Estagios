@@ -21,7 +21,7 @@ export default function CardInformacoes() {
                         <img src="/CardInfoImgs/empresa.jpeg" className="CardImg" alt="Empresa" />
                         <div className="CardTexto">
                             <h1>Empresa</h1>
-                            <p>Conecte sua empresa com a UniverseEstágios! Clique aqui.</p>
+                            <p>Conecte sua empresa com a UniverseEstágios! </p>
                         </div>
                     </motion.div>
 
@@ -50,7 +50,7 @@ export default function CardInformacoes() {
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.4 }}
                         viewport={{ once: true }}
                     >
-                        <img src="/CardInfoImgs/estudante.jpeg" className="CardImg" alt="Estudante" />
+                        <img src="/CardInfoImgs/estudante.jpg" className="CardImg" alt="Estudante" />
                         <div className="CardTexto">
                             <h1>Estudante</h1>
                             <p>Vagas de estágio espalhadas por todo o Brasil.</p>
