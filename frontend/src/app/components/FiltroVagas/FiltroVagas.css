@@ -1,0 +1,106 @@
+
+
+
+.formVagas {
+  width: 100%; 
+  background-color:transparent; 
+  z-index: 1;
+
+
+}
+/* Títulos */
+.formVagas h6 {
+  font-weight: 600;
+  font-size: 20px;
+  text-align: start;
+  color: #fff;
+}
+.formVagas h1 {
+  color: #fff;
+  margin-top: 5rem;
+  font-weight: 500;
+  font-size: 2rem;
+  display: flex;
+  margin-bottom: 3rem;
+  justify-content: center;
+}
+
+/* Botão aplicar */
+ .BotaoAplicar button {
+  margin-top: 2rem;
+  background-color: #148a9d;;
+}
+ .BotaoAplicar button:hover {
+  background-color: #17a2b8;
+}
+
+/* Inputs de texto */
+.formVagas input {
+  height: 3.5rem;
+}
+
+.formVagas input.form-control {
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.formVagas input.form-control:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.05rem;
+}
+
+/* Dropdown customizado */
+.formVagas .form-select {
+  height: 3.5rem;
+  border: 1px solid;
+  border-radius: 4px;
+  padding: 8px 12px;
+  text-align: left;
+  background-color: #F5F5F5;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.formVagas .form-select:hover,
+.formVagas .form-select:focus {
+  border-color: #000;
+  box-shadow: 0 0 0 0.05rem;
+}
+
+/* Lista de opções */
+.formVagas ul {
+  margin: 0;
+  padding: 0;
+}
+
+.formVagas ul li {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 8px 12px;
+ background-color: #F1F5F9; 
+  cursor: pointer;
+}
+
+/* Hover só em dispositivos que suportam hover (desktop/tablet) */
+@media (hover: hover) and (pointer: fine) {
+  .formVagas ul li:hover {
+    background-color:#17a2b8;
+    color: #fff;
+  }
+  .formVagas ul li.selected {
+    background-color: #17a2b8;
+    color: #fff;
+  }
+}
+@media (max-width: 767.98px) {
+  .formVagas h6 {
+    color: black !important;
+  }
+}

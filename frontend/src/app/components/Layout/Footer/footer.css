@@ -1,0 +1,107 @@
+footer {
+  background-color: rgba(0, 0, 0, 0.6);         /* Fundo mais escuro e mais opaco */
+  backdrop-filter: blur(12px) brightness(1.2);  /* Blur mais forte + brilho leve */
+  -webkit-backdrop-filter: blur(12px) brightness(1.2); /* Safari */
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.15); /* Sombra mais evidente */
+
+  top: 0;
+  z-index: 1000;
+}
+
+footer {
+  margin-top: 10rem;
+  color: rgb(255, 255, 255);
+  background-image: url(/footer.jpg);
+  justify-content: center;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+ 
+}
+ 
+.logo{
+    width: 7vw;      
+    flex-direction: column;
+ 
+}
+ 
+.texto{
+  flex-direction: column;
+  display: flex;
+  margin-top: 2rem;
+  align-items: center;
+  text-shadow: #000000;
+}
+ 
+.search-form {
+  display: flex;
+  justify-content: center;
+}
+ 
+.search-form input {
+  padding: 8px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  border: 1px solid black;
+  width: 300px;
+  min-width: 200px;
+  justify-content: center;
+}
+ 
+.search-form button {
+  padding: 10px 8px;
+  border: none;
+  background-color: #000000;
+  color: white;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  border: 2px solid black;
+ 
+  justify-content: center;
+}
+ 
+.search-form button:hover {
+  background-color: #000000;
+  justify-content: center;
+}
+ 
+.search-form .icon {
+  width: 16px;
+  height: auto;
+  justify-content: center;
+}
+ 
+.instagram-icon {
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+ 
+.instagram-icon svg {
+  width: 24px;
+  height: 24px;
+}
+ 
+.twitter-icon {
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+ 
+.twitter-icon svg {
+  width: 24px;
+  height: 24px;
+}
+ 
+.facebook-icon {
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+ 
+.facebook-icon svg {
+  width: 24px;
+  height: 24px;
+}
